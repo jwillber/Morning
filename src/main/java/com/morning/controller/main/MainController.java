@@ -54,7 +54,6 @@ public class MainController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@RequiresPermissions("system:view")
 	@RequestMapping(method = RequestMethod.GET)
 	public String main(Model model) {
 		Map<String, Object> mainCountMap = new HashMap<>();
@@ -78,7 +77,6 @@ public class MainController extends BaseController {
 	 * @param request
 	 * @return
 	 */
-	@RequiresPermissions("system:view")
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public String mainIndex(Model model) {
 		Map<String, Object> webCountMap = new HashMap<>();

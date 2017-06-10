@@ -77,7 +77,7 @@ Morning系統目前包括以下三大系统，电子商城系统、公益商城�
 
 4、用Tomcat等服务器运行morning-cms-web
 
-5、后台管理系统（CMS），账号：admdin 密码：123456    测试地址：http://localhost:8080/system.morning/login
+5、后台管理系统（CMS），账号：admin 密码：123456    测试地址：http://localhost:8080/system.morning/login
 
 ```
 

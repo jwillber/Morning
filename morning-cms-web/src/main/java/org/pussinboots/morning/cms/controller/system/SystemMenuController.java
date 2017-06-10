@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.alibaba.fastjson.JSON;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -158,7 +156,6 @@ public class SystemMenuController  extends BaseController {
 		AuthorizingUser authorizingUser = SingletonLoginUtils.getUser();
 		if (authorizingUser != null) {
 			// 更新用户及菜单记录
-			System.out.println(JSON.toJSON(menu));
 			Integer count = menuService.updateMenu(menu, authorizingUser.getUserName());
 			return new CmsResult(CommonReturnCode.SUCCESS, count);
 		} else {
@@ -172,7 +169,7 @@ public class SystemMenuController  extends BaseController {
 	 */
 	@ApiOperation(value = "获取菜单图标", notes = "获取菜单图标")
 	@GetMapping(value = "/icon")
-	public String icon() {
+	public String icon(Model model) {
 		return "/modules/menu/system_menu_icon";
 	}
 }

@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * 
 * 项目名称：morning-system-service   
 * 类名称：MenuMapper   
-* 类描述：Menu / 目录表 数据访问接口   
+* 类描述：Menu / 目录表 数据访问层接口   
 * 创建人：陈星星   
 * 创建时间：2017年4月7日 下午2:13:28   
 *
@@ -19,7 +19,7 @@ public interface MenuMapper extends BaseMapper<Menu> {
 	
 	/**
 	 * 根据目录类型查询目录列表
-	 * @param type 目录类型
+	 * @param menuType 目录类型
 	 * @return
 	 */
 	List<Menu> listByType(@Param("menuType") Integer menuType);

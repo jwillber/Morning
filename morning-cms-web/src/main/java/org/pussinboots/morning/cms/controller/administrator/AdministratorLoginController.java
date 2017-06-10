@@ -2,7 +2,6 @@ package org.pussinboots.morning.cms.controller.administrator;
 
 import java.awt.image.BufferedImage;
 import java.util.Date;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
@@ -24,7 +23,6 @@ import org.pussinboots.morning.cms.common.util.ServletUtils;
 import org.pussinboots.morning.cms.common.util.SingletonLoginUtils;
 import org.pussinboots.morning.common.base.BaseController;
 import org.pussinboots.morning.common.constant.CommonReturnCode;
-import org.pussinboots.morning.common.util.RSAUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,12 +63,9 @@ public class AdministratorLoginController extends BaseController{
 	 * @param model
 	 * @return
 	 */
-	@ApiOperation(value = "管理员登录", notes = "管理员登录首页,向前台传送网站公钥")  
+	@ApiOperation(value = "管理员登录", notes = "管理员登录首页,向前台传送网站公钥")
 	@GetMapping(value = "/login")
 	public String getLoginPage(Model model) {
-		// 将公钥的 modulus 和 exponent 传给页面
-		Map<String, Object> publicKeyMap = RSAUtils.getPublicKeyMap();
-		model.addAttribute("publicKeyMap", publicKeyMap);
 		return "/modules/login/admin_login";
 	}
 	
@@ -87,11 +82,9 @@ public class AdministratorLoginController extends BaseController{
 		if (!SingletonLoginUtils.validate(registerCode)) {
 			return new CmsResult(UserReturnCode.REGISTER_CODE_ERROR);
 		}
-		// 服务器端,使用RSAUtils工具类对密文进行解密
-		String passWord = RSAUtils.decryptStringByJs(loginPassword);
 		
 		Subject currentUser = SecurityUtils.getSubject();
-		UsernamePasswordToken token = new UsernamePasswordToken(loginName, passWord);
+		UsernamePasswordToken token = new UsernamePasswordToken(loginName, loginPassword);
 		token.setRememberMe(false);// 默认不记住密码
 		try{
 			currentUser.login(token);
@@ -184,5 +177,4 @@ public class AdministratorLoginController extends BaseController{
 		}
 		return null;
 	}
-	
 }

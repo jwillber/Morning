@@ -78,7 +78,22 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 7.请求类型转换过滤器 -->
+	<!-- 7.Druid:WebStatFilter用于采集web-jdbc关联监控的数据。 -->
+	<filter>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+        <!-- 经常需要排除一些不必要的url，比如.js,/jslib/等等。配置在init-param中 -->
+        <init-param>
+            <param-name>exclusions</param-name>
+            <param-value>/static/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DruidWebStatFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>	
+	
+	<!-- 8.请求类型转换过滤器 -->
 	<!-- 将这些请求转换为标准的http方法，使得支持GET、POST、PUT与DELETE请求 -->
 	<filter>
 	      <filter-name>HttpMethodFilter</filter-name>
@@ -89,7 +104,7 @@
 	     <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 8.SpringMVC核心分发器:Spring MVC servlet -->
+	<!-- 9.SpringMVC核心分发器:Spring MVC servlet -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -105,6 +120,31 @@
 		<servlet-name>SpringMVC</servlet-name>
 		<url-pattern>/</url-pattern>               				 <!-- <url-pattern>/</url-pattern> 指定访问这个Servlet的URL.这里给出的是对于整个Web应用的相对URL路径. 会拦截/结尾的请求. -->
 	</servlet-mapping>
+
+	<!-- 10.配置 Druid 监控信息显示页面 -->  
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+        <init-param>  
+	    <!-- 允许清空统计数据 -->  
+	    <param-name>resetEnable</param-name>  
+	    <param-value>true</param-value>  
+	    </init-param>  
+	    <init-param>  
+	    <!-- 用户名 -->  
+	    <param-name>loginUsername</param-name>  
+	    <param-value>druid</param-value>  
+	    </init-param>  
+	    <init-param>  
+	    <!-- 密码 -->  
+	    <param-name>loginPassword</param-name>  
+	    <param-value>druid</param-value>  
+	    </init-param> 
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>	
 
 	<!-- 默认欢迎页 -->
 	<!-- Servlet2.5中可直接在此处执行Servlet应用,如<welcome-file>servlet/InitSystemParamServlet</welcome-file> -->

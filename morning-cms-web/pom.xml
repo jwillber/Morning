@@ -45,7 +45,17 @@
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-online-service</artifactId>
 			<version>${morning.version}</version>
-		</dependency>					
+		</dependency>	
+		<dependency>
+			<groupId>org.pussinboots.morning</groupId>
+			<artifactId>morning-product-facade</artifactId>
+			<version>${morning.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pussinboots.morning</groupId>
+			<artifactId>morning-product-service</artifactId>
+			<version>${morning.version}</version>
+		</dependency>							
 		<!-- Morning相关依赖 end -->
 
 		<!-- 7.安全框架SECURITY:shiro begin -->

@@ -204,4 +204,26 @@
 					category_id = #{categoryId}
 			)
     </select>
+    
+    <!-- 根据分页信息/搜索内容/父类目ID查找分类列表 -->
+    <select id="listParentByPage" resultType="org.pussinboots.morning.product.entity.Category">
+    	SELECT
+    		<include refid="Base_Column_List" />
+    	FROM
+    		os_category
+    	WHERE
+    		parent_id = #{parentId}
+       		<if test="search != null">
+				AND (
+					name LIKE '%' #{search} '%' 
+					OR page_title LIKE '%' #{search} '%'
+					OR page_description LIKE '%' #{search} '%'
+					OR page_keyword LIKE '%' #{search} '%'
+					OR remarks LIKE '%' #{search} '%'
+				)
+			</if>
+			<if test="pageInfo.sort != null">
+				ORDER BY ${pageInfo.sort} ${pageInfo.order}
+			</if>  
+    </select>
 </mapper>

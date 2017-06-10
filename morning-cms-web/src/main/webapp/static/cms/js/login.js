@@ -68,12 +68,6 @@ $(function() {
 			$("input[name='registerCode']").attr("placeholder", "输入验证码");
 			return false;
 		}
-		var modulus = $("input[name='loginPassword']").attr("data-modulus"),
-			exponent = $("input[name='loginPassword']").attr("data-exponent")
-		if (loginPassword.length != 256) {
-			var publicKey = RSAUtils.getKeyPair(exponent, '', modulus);
-			loginPassword = RSAUtils.encryptedString(publicKey, loginPassword);
-		}
 		$.ajax({
 			url : baselocation + '/login',
 			type : 'post',

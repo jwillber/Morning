@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+import org.pussinboots.morning.common.support.page.PageInfo;
 import org.pussinboots.morning.product.entity.Category;
 import org.pussinboots.morning.product.pojo.vo.CategoryVO;
 
@@ -89,4 +91,15 @@ public interface CategoryMapper extends BaseMapper<Category> {
 	 * @return
 	 */
 	Category getUpper(@Param("categoryId") Long categoryId);
+	
+	/**
+	 * 根据分页信息/搜索内容/父类目ID查找分类列表
+	 * @param parentId 父类目ID
+	 * @param pageInfo 分页信息
+	 * @param search 搜索内容
+	 * @param page 分页实体
+	 * @return
+	 */
+	List<Category> listParentByPage(@Param("parentId") Long parentId, @Param("pageInfo") PageInfo pageInfo,
+			@Param("search") String search, RowBounds rowBounds);
 }

@@ -100,6 +100,32 @@
 		</dependency>
 		<!-- SERVLET WEB end -->
 
+		<!-- 4.MYBATIS 持久层框架 begin -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>		  <!-- mybatis持久层框架 -->
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>	  <!-- mybatis-plus Mybatis增强辅助工具 -->
+		</dependency>
+		<!-- MYBATIS 持久层框架 end -->
+
+		<!-- 5.MYSQL 数据库相关依赖 begin -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId><!-- 导入Mysql数据库驱动包 -->
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>              <!-- connection pool:数据库连接池,用来在spingMVC-mybatis.xml中配置数据库 -->
+		</dependency>
+		<!-- MYSQL 数据库相关依赖 end -->
+
 		<!-- 6.LOG 日志相关依赖 begin -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

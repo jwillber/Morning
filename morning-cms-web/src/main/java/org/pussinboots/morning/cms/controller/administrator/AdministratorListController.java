@@ -1,18 +1,14 @@
 package org.pussinboots.morning.cms.controller.administrator;
 
-import java.util.List;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.pussinboots.morning.administrator.entity.Organization;
 import org.pussinboots.morning.administrator.entity.Role;
 import org.pussinboots.morning.administrator.entity.User;
 import org.pussinboots.morning.administrator.entity.UserLoginLog;
 import org.pussinboots.morning.administrator.pojo.dto.UserPageDTO;
-import org.pussinboots.morning.administrator.service.IOrganizationService;
-import org.pussinboots.morning.administrator.service.IRoleService;
-import org.pussinboots.morning.administrator.service.IUserLoginLogService;
-import org.pussinboots.morning.administrator.service.IUserRoleService;
-import org.pussinboots.morning.administrator.service.IUserService;
+import org.pussinboots.morning.administrator.service.*;
 import org.pussinboots.morning.cms.common.result.CmsPageResult;
 import org.pussinboots.morning.cms.common.result.CmsResult;
 import org.pussinboots.morning.cms.common.security.AuthorizingUser;
@@ -27,17 +23,9 @@ import org.pussinboots.morning.common.util.RegexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import java.util.List;
 
 /**
  * 
@@ -78,8 +66,6 @@ public class AdministratorListController extends BaseController{
 	
 	/**
 	 * GET 管理员列表
-	 * @param pageInfo
-	 * @param search
 	 * @return
 	 */
 	@ApiOperation(value = "获取管理员列表", notes = "根据分页信息/搜索内容获取管理员列表")  
@@ -93,8 +79,6 @@ public class AdministratorListController extends BaseController{
 	
 	/**
 	 * GET 个人资料
-	 * @param model
-	 * @param userId 管理员ID
 	 * @return
 	 */
 	@ApiOperation(value = "获取管理员个人资料", notes = "根据url管理员ID获取管理员个人资料")
@@ -114,7 +98,6 @@ public class AdministratorListController extends BaseController{
 	
 	/**
 	 * PUT 启用/冻结管理员
-	 * @param userId 管理员ID
 	 * @return
 	 */
 	@ApiOperation(value = "启用/冻结管理员", notes = "根据url管理员ID启动/冻结管理员")
@@ -133,7 +116,6 @@ public class AdministratorListController extends BaseController{
 	
 	/**
 	 * DELETE 删除管理员
-	 * @param userId 管理员ID
 	 * @return
 	 */
 	@ApiOperation(value = "删除管理员", notes = "根据url管理员ID删除管理员")
@@ -152,7 +134,6 @@ public class AdministratorListController extends BaseController{
 	
 	/**
 	 * GET 管理员登录日志列表页面
-	 * @param model
 	 * @return
 	 */
 	@ApiOperation(value = "管理员登录日志列表页面", notes = "管理员登录日志列表页面")

@@ -1,7 +1,7 @@
 package org.pussinboots.morning.cms.controller.administrator;
 
-import java.util.List;
-
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.pussinboots.morning.administrator.common.constant.UserReturnCode;
 import org.pussinboots.morning.administrator.entity.Role;
@@ -25,63 +25,57 @@ import org.pussinboots.morning.common.util.RegexUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import java.util.List;
 
 /**
- * 
-* 项目名称：morning-cms-web Maven Webapp   
-* 类名称：AdministratorInfoController   
-* 类描述：管理员个人信息表示层控制器         
-* 创建人：陈星星   
-* 创建时间：2017年4月2日 上午1:49:53   
+ *
+* 项目名称：morning-cms-web Maven Webapp
+* 类名称：AdministratorInfoController
+* 类描述：管理员个人信息表示层控制器
+* 创建人：陈星星
+* 创建时间：2017年4月2日 上午1:49:53
 *
  */
 @Controller
 @RequestMapping(value = "/administrator/info")
 @Api(value = "管理员个人信息", description = "管理员个人信息")
 public class AdministratorInfoController extends BaseController {
-	
+
 	@Autowired
 	private IUserService userService;
 	@Autowired
 	private IUserLoginLogService userLoginLogService;
 	@Autowired
 	private IUserRoleService userRoleService;
-	
+
 	/**
 	 * GET 管理员个人信息
 	 * @return
 	 */
-	@ApiOperation(value = "管理员个人信息", notes = "管理员信息/管理员日志列表/管理员权限")  
+	@ApiOperation(value = "管理员个人信息", notes = "管理员信息/管理员日志列表/管理员权限")
 	@RequiresPermissions("administrator:info:view")
 	@GetMapping(value = "/view")
 	public String getInfoPage(Model model) {
-		
+
 		// 管理员信息
 		UserVO userVO = userService.getById(SingletonLoginUtils.getUserId());
 		model.addAttribute("user", userVO);
 
 		// 管理员权限
-		List<Role> roles = userRoleService.listByUserId(SingletonLoginUtils.getUserId(), StatusEnum.NORMAL.getStatus());
+		List<Role> roles = userRoleService.listByUserId(SingletonLoginUtils.getUserId(),
+				StatusEnum.NORMAL.getStatus());
 		model.addAttribute("roles", roles);
-		
+
 		return "/modules/admin/admin_user_info";
 	}
-	
+
 	/**
 	 * GET 管理员个人登录日志
-	 * @param pageInfo
-	 * @param search
 	 * @return
 	 */
-	@ApiOperation(value = "管理员个人登录日志", notes = "管理员个人登录日志")  
+	@ApiOperation(value = "管理员个人登录日志", notes = "管理员个人登录日志")
 	@RequiresPermissions("administrator:info:view")
 	@GetMapping(value = "/logs")
 	@ResponseBody
@@ -97,13 +91,12 @@ public class AdministratorInfoController extends BaseController {
 			return new CmsResult(CommonReturnCode.UNAUTHORIZED);
 		}
 	}
-	
+
 	/**
 	 * PUT 更新管理员信息
-	 * @param user
 	 * @return
 	 */
-	@ApiOperation(value = "更新管理员个人信息", notes = "管理员名/真实姓名/性别/年龄/电话/电子邮箱")  
+	@ApiOperation(value = "更新管理员个人信息", notes = "管理员名/真实姓名/性别/年龄/电话/电子邮箱")
 	@RequiresPermissions("administrator:info:edit")
 	@PutMapping(value = "/edit")
 	@ResponseBody
@@ -118,12 +111,12 @@ public class AdministratorInfoController extends BaseController {
 			return new CmsResult(CommonReturnCode.UNAUTHORIZED);
 		}
 	}
-	
+
 	/**
 	 * POST 修改管理员密码
 	 * @return
 	 */
-	@ApiOperation(value = "更新管理员密码", notes = "原密码/新密码/确认密码")  
+	@ApiOperation(value = "更新管理员密码", notes = "原密码/新密码/确认密码")
 	@RequiresPermissions("administrator:info:edit")
 	@PutMapping(value = "/edit/psw")
 	@ResponseBody
@@ -151,10 +144,9 @@ public class AdministratorInfoController extends BaseController {
 			return new CmsResult(CommonReturnCode.UNAUTHORIZED);
 		}
 	}
-	
+
 	/**
 	 * GET 管理员头像页面
-	 * @param model
 	 * @return
 	 */
 	@ApiOperation(value = "管理员头像页面", notes = "管理员头像页面")
@@ -166,7 +158,7 @@ public class AdministratorInfoController extends BaseController {
 		model.addAttribute("user", userVO);
 		return "/modules/admin/admin_user_avatar";
 	}
-	
+
 	/**
 	 * PUT 修改管理员头像
 	 * @return

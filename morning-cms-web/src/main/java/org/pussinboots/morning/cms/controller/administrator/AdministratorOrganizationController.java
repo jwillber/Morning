@@ -58,7 +58,7 @@ public class AdministratorOrganizationController extends BaseController {
 	@ApiOperation(value = "组织列表页面", notes = "组织列表页面")
 	@RequiresPermissions("administrator:organization:view")
 	@GetMapping(value = "/view")
-	public String getListPage() {
+	public String getListPage(Model model) {
 		return "/modules/organization/admin_organization_list";
 	}
 	

@@ -93,7 +93,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
-   	<!-- 7.请求类型转换过滤器 -->
+   	<!-- 8.请求类型转换过滤器 -->
 	<!-- 将这些请求转换为标准的http方法，使得支持GET、POST、PUT与DELETE请求 -->
 	<filter>
 	      <filter-name>HttpMethodFilter</filter-name>
@@ -104,7 +104,7 @@
 	     <url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- 8.SpringMVC核心分发器:Spring MVC servlet   -->
+	<!-- 9.SpringMVC核心分发器:Spring MVC servlet   -->
 	<servlet>
 		<servlet-name>SpringMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -121,7 +121,7 @@
 		<url-pattern>/</url-pattern>               				 <!--  <url-pattern>/</url-pattern> 指定访问这个Servlet的URL。这里给出的是对于整个Web应用的相对URL路径. 会拦截/结尾的请求。 -->
 	</servlet-mapping>
 	
-	<!-- 9.配置 Druid 监控信息显示页面 -->  
+	<!-- 10.配置 Druid 监控信息显示页面 -->  
     <servlet>
         <servlet-name>DruidStatView</servlet-name>
         <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>

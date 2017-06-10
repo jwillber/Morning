@@ -19,8 +19,9 @@
     <!-- 开启注解事务管理器 -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 	
-	<!-- 配置多事务语义 -->
+	<!-- 配置事务通知属性 -->
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+		<!-- 定义事务传播属性 -->
 		<tx:attributes>
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
 			<tx:method name="count*" propagation="SUPPORTS" read-only="true" />
@@ -35,7 +36,8 @@
 			<tx:method name="delete*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
-	<!-- 配置切面 -->
+	
+	<!-- 配置事务切面,service包中的类会被代理 -->
 	<aop:config>
 		<aop:pointcut id="txPointcut"
 			expression="execution(* org.pussinboots.morning.*.service.impl.*.*(..))" />
@@ -93,7 +95,7 @@
 		<property name="typeAliasesPackage" value="org.pussinboots.morning.*.entity" />
 		<!-- 配置Mapper扫描路径（IDEA系列编辑器需要特别注意,因为IDEA的设置问题,src中的xml文件是不会被编译的,如果放在src中可能会报错,解决办法详见 
 			常用问题-Invalid bound statement (not found) 错误如何解决?） -->
-		<property name="mapperLocations" value="classpath:/mybatis/**/*Mapper.xml" />
+		<property name="mapperLocations" value="classpath*:/mybatis/**/*Mapper.xml" />
 		<!-- 插件配置项 -->
 		<property name="plugins">
 			<array>

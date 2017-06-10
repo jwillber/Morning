@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.pussinboots.morning.common.base.BasePageDTO;
 import org.pussinboots.morning.common.enums.StatusEnum;
+import org.pussinboots.morning.common.support.page.PageInfo;
 import org.pussinboots.morning.product.common.enums.CategoryRecommendTypeEnum;
 import org.pussinboots.morning.product.common.enums.CategoryTypeEnum;
 import org.pussinboots.morning.product.common.util.CategoryUtils;
@@ -19,6 +21,7 @@ import org.pussinboots.morning.product.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 
 /**
@@ -37,6 +40,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 	private CategoryMapper categoryMapper;
 	@Autowired
 	private ProductCategoryMapper productCategoryMapper;
+	
+	@Override
+	public Integer insertAdvert(Category category, String userName) {
+		category.setCreateTime(new Date());
+		category.setCreateBy(userName);
+		return categoryMapper.insert(category);
+	}
 
 	@Override
 	public List<CategoryVO> listTop(Integer showNumber, Integer advertNumber) {
@@ -261,6 +271,39 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
 			}
 			getUpperCategory(categories, upperCategory.getCategoryId());
 		}
+	}
+
+	@Override
+	public BasePageDTO<Category> listParentByPage(PageInfo pageInfo, String search, Long parentId) {
+		Page<Category> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
+		List<Category> categories = categoryMapper.listParentByPage(parentId, pageInfo, search, page);
+		pageInfo.setTotal(page.getTotal());
+		return new BasePageDTO<Category>(pageInfo, categories);
+	}
+
+	@Override
+	public Integer updateStatus(Long categoryId) {
+		Category category = categoryMapper.selectById(categoryId);
+
+		if (category != null && StatusEnum.SHOW.getStatus().equals(category.getStatus())) {
+			Category updateCategory = new Category();
+			updateCategory.setCategoryId(category.getCategoryId());
+			updateCategory.setStatus(StatusEnum.HIDDEN.getStatus());
+			return categoryMapper.updateById(updateCategory);
+		} else if (category != null && StatusEnum.HIDDEN.getStatus().equals(category.getStatus())) {
+			Category updateCategory = new Category();
+			updateCategory.setCategoryId(category.getCategoryId());
+			updateCategory.setStatus(StatusEnum.SHOW.getStatus());
+			return categoryMapper.updateById(updateCategory);
+		}
+		return null;
+	}
+
+	@Override
+	public Integer updateCategory(Category category, String userName) {
+		category.setUpdateBy(userName);
+		category.setUpdateTime(new Date());
+		return categoryMapper.updateById(category);
 	}
 
 }

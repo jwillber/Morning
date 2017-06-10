@@ -10,10 +10,285 @@ Target Server Type    : MYSQL
 Target Server Version : 50712
 File Encoding         : 65001
 
-Date: 2017-05-14 22:37:51
+Date: 2017-06-10 10:23:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for cms_log
+-- ----------------------------
+DROP TABLE IF EXISTS `cms_log`;
+CREATE TABLE `cms_log` (
+  `log_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+  `user_id` bigint(20) unsigned DEFAULT NULL COMMENT '管理员ID',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `spend_time` int(11) DEFAULT NULL COMMENT '耗时',
+  `method` varchar(64) DEFAULT NULL COMMENT '请求类型',
+  `user_agent` varchar(255) DEFAULT NULL COMMENT '用户标识',
+  `user_ip` varchar(64) DEFAULT NULL COMMENT '用户IP',
+  `opt_content` text COMMENT '请求内容',
+  `url` varchar(255) DEFAULT NULL COMMENT '请求路径',
+  PRIMARY KEY (`log_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=286 DEFAULT CHARSET=utf8mb4 COMMENT='日志记录表';
+
+-- ----------------------------
+-- Records of cms_log
+-- ----------------------------
+INSERT INTO `cms_log` VALUES ('32', '1', '2017-06-09 04:28:33', '72', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('33', '1', '2017-06-09 04:28:39', '5', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/66/create');
+INSERT INTO `cms_log` VALUES ('34', '1', '2017-06-09 04:30:12', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getUpdatePage,[参数]:null', '/system.morning/system/menu/2/edit');
+INSERT INTO `cms_log` VALUES ('35', '1', '2017-06-09 04:34:16', '31', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getUpdatePage,[参数]:null', '/system.morning/system/menu/2/edit');
+INSERT INTO `cms_log` VALUES ('36', '1', '2017-06-09 04:36:06', '193', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('37', '1', '2017-06-09 04:36:08', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:getInfoPage,[参数]:null', '/system.morning/administrator/info/view');
+INSERT INTO `cms_log` VALUES ('38', '1', '2017-06-09 04:36:10', '82', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:listLogs,[参数]:sort=loginTime&order=desc&offset=0&limit=20&', '/system.morning/administrator/info/logs');
+INSERT INTO `cms_log` VALUES ('39', '1', '2017-06-09 04:36:10', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/list/view');
+INSERT INTO `cms_log` VALUES ('40', '1', '2017-06-09 04:36:11', '16', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/list/');
+INSERT INTO `cms_log` VALUES ('41', '1', '2017-06-09 04:36:12', '4', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getRolePage,[参数]:null', '/system.morning/administrator/role/view');
+INSERT INTO `cms_log` VALUES ('42', '1', '2017-06-09 04:36:12', '22', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:listRole,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/role/');
+INSERT INTO `cms_log` VALUES ('43', '1', '2017-06-09 04:36:37', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineNavigationController,[方法]:getNavigationPage,[参数]:null', '/system.morning/online/navigation/view');
+INSERT INTO `cms_log` VALUES ('44', '1', '2017-06-09 04:36:38', '22', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineNavigationController,[方法]:listNavigation,[参数]:order=desc&offset=0&limit=20&', '/system.morning/online/navigation/');
+INSERT INTO `cms_log` VALUES ('45', '1', '2017-06-09 04:36:39', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineAdvertController,[方法]:getAdvertPage,[参数]:null', '/system.morning/online/advert/view');
+INSERT INTO `cms_log` VALUES ('46', '1', '2017-06-09 04:36:40', '44', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineAdvertController,[方法]:listAdvert,[参数]:order=desc&offset=0&limit=20&', '/system.morning/online/advert/');
+INSERT INTO `cms_log` VALUES ('47', '1', '2017-06-09 04:36:42', '33', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('48', '1', '2017-06-09 04:36:44', '44', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemVersionLogController,[方法]:list,[参数]:null', '/system.morning/system/version/view');
+INSERT INTO `cms_log` VALUES ('49', '1', '2017-06-09 04:36:57', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineNavigationController,[方法]:getNavigationPage,[参数]:null', '/system.morning/online/navigation/view');
+INSERT INTO `cms_log` VALUES ('50', '1', '2017-06-09 04:36:57', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.online.OnlineNavigationController,[方法]:listNavigation,[参数]:order=desc&offset=0&limit=20&', '/system.morning/online/navigation/');
+INSERT INTO `cms_log` VALUES ('51', '1', '2017-06-09 04:36:59', '28', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('52', '1', '2017-06-09 04:38:31', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getUpdatePage,[参数]:null', '/system.morning/system/menu/2/edit');
+INSERT INTO `cms_log` VALUES ('53', '1', '2017-06-09 04:42:00', '531', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('54', '1', '2017-06-09 04:42:04', '86', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemVersionLogController,[方法]:list,[参数]:null', '/system.morning/system/version/view');
+INSERT INTO `cms_log` VALUES ('55', '1', '2017-06-09 04:42:04', '58', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('56', '1', '2017-06-09 04:42:08', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/65/create');
+INSERT INTO `cms_log` VALUES ('57', '1', '2017-06-09 04:42:09', '42', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:icon,[参数]:null', '/system.morning/system/menu/icon');
+INSERT INTO `cms_log` VALUES ('58', '1', '2017-06-09 04:45:21', '481', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorLoginController,[方法]:login,[参数]:loginName=admin&loginPassword=123456&registerCode=6585&', '/system.morning/login');
+INSERT INTO `cms_log` VALUES ('59', '1', '2017-06-09 04:45:21', '105', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('60', '1', '2017-06-09 04:45:25', '67', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('61', '1', '2017-06-09 04:45:27', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/84/create');
+INSERT INTO `cms_log` VALUES ('62', '1', '2017-06-09 04:45:29', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:icon,[参数]:null', '/system.morning/system/menu/icon');
+INSERT INTO `cms_log` VALUES ('63', '1', '2017-06-09 04:45:34', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/65/create');
+INSERT INTO `cms_log` VALUES ('64', '1', '2017-06-09 04:45:38', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/101/create');
+INSERT INTO `cms_log` VALUES ('65', '1', '2017-06-09 04:46:05', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:icon,[参数]:null', '/system.morning/system/menu/icon');
+INSERT INTO `cms_log` VALUES ('66', '1', '2017-06-09 04:46:38', '14', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:insert,[参数]:menuName=日志记录&menuCode=log&href=/system/log/view&icon=file-text&sort=50&status=1&permission=&remarks=&menuType=0&parentId=101&', '/system.morning/system/menu');
+INSERT INTO `cms_log` VALUES ('67', '1', '2017-06-09 04:46:40', '40', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('68', '1', '2017-06-09 04:46:45', '25', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('69', '1', '2017-06-09 04:46:48', '27', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('70', '1', '2017-06-09 04:47:18', '20', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('71', '1', '2017-06-09 04:47:21', '23', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('72', '1', '2017-06-09 04:47:55', '26', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('73', '1', '2017-06-09 04:48:06', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:getInsertPage,[参数]:null', '/system.morning/system/menu/109/create');
+INSERT INTO `cms_log` VALUES ('74', '1', '2017-06-09 04:48:28', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:icon,[参数]:null', '/system.morning/system/menu/icon');
+INSERT INTO `cms_log` VALUES ('75', '1', '2017-06-09 04:48:47', '9', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:insert,[参数]:menuName=查看&menuCode=log_view&href=/system/log/view&icon=&sort=1&status=1&permission=system:log:view&remarks=&menuType=0&parentId=109&', '/system.morning/system/menu');
+INSERT INTO `cms_log` VALUES ('76', '1', '2017-06-09 04:48:49', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('77', '1', '2017-06-09 04:52:12', '30', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:getInfoPage,[参数]:null', '/system.morning/administrator/info/view');
+INSERT INTO `cms_log` VALUES ('78', '1', '2017-06-09 04:52:14', '84', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:listLogs,[参数]:sort=loginTime&order=desc&offset=0&limit=20&', '/system.morning/administrator/info/logs');
+INSERT INTO `cms_log` VALUES ('79', '1', '2017-06-09 04:52:14', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/list/view');
+INSERT INTO `cms_log` VALUES ('80', '1', '2017-06-09 04:52:15', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/list/');
+INSERT INTO `cms_log` VALUES ('81', '1', '2017-06-09 05:05:09', '504', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorLoginController,[方法]:login,[参数]:loginName=admin&loginPassword=123456&registerCode=w5xn&', '/system.morning/login');
+INSERT INTO `cms_log` VALUES ('82', '1', '2017-06-09 05:05:09', '93', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('83', '1', '2017-06-09 05:05:13', '65', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('84', '1', '2017-06-09 05:05:16', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getRolePage,[参数]:null', '/system.morning/administrator/role/view');
+INSERT INTO `cms_log` VALUES ('85', '1', '2017-06-09 05:05:18', '49', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:listRole,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/role/');
+INSERT INTO `cms_log` VALUES ('86', '1', '2017-06-09 05:05:19', '294', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getUpdatePage,[参数]:null', '/system.morning/administrator/role/1/edit');
+INSERT INTO `cms_log` VALUES ('87', '1', '2017-06-09 05:05:26', '58', 'PUT', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:update,[参数]:roleName=超级管理员&roleSign=admin&isSystem=0&status=1&remarks=超级管理员，拥有系统所有的权力！&menuIds=1,2,8,9,10,3,4,5,6,7,69,11,12,13,14,15,83,86,87,88,89,91,90,16,17,18,19,20,21,70,22,23,24,25,26,27,28,29,30,31,32,72,33,34,35,36,37,107,38,39,40,41,42,43,44,45,46,47,48,94,95,96,97,98,99,100,101,102,103,104,105,106,65,66,74,75,76,77,78,84,85,93,108,109,110,&', '/system.morning/administrator/role/1');
+INSERT INTO `cms_log` VALUES ('88', '1', '2017-06-09 05:05:28', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getRolePage,[参数]:null', '/system.morning/administrator/role/view');
+INSERT INTO `cms_log` VALUES ('89', '1', '2017-06-09 05:05:30', '21', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('90', '1', '2017-06-09 05:06:09', '30', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('91', '1', '2017-06-09 05:09:36', '364', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorLoginController,[方法]:login,[参数]:loginName=admin&loginPassword=123456&registerCode=xe8m&', '/system.morning/login');
+INSERT INTO `cms_log` VALUES ('92', '1', '2017-06-09 05:09:36', '65', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('93', '1', '2017-06-09 05:09:39', '3', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('94', '1', '2017-06-09 05:10:38', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('95', '1', '2017-06-09 05:10:44', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('96', '1', '2017-06-09 05:10:59', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.242.254', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('97', '1', '2017-06-09 08:29:52', '1101', 'POST', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorLoginController,[方法]:login,[参数]:loginName=admin&loginPassword=123456&registerCode=87d5&', '/system.morning/login');
+INSERT INTO `cms_log` VALUES ('98', '1', '2017-06-09 08:29:53', '104', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('99', '1', '2017-06-09 08:29:56', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/list/view');
+INSERT INTO `cms_log` VALUES ('100', '1', '2017-06-09 08:29:57', '71', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/list/');
+INSERT INTO `cms_log` VALUES ('101', '1', '2017-06-09 08:30:11', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('102', '1', '2017-06-09 08:30:12', '222', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('103', '1', '2017-06-09 08:30:16', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=20&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('104', '1', '2017-06-09 08:30:16', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=40&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('105', '1', '2017-06-09 08:30:17', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=60&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('106', '1', '2017-06-09 08:30:18', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('107', '1', '2017-06-09 08:30:19', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=20&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('108', '1', '2017-06-09 08:30:19', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=40&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('109', '1', '2017-06-09 08:30:20', '16', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=60&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('110', '1', '2017-06-09 08:30:20', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('111', '1', '2017-06-09 08:32:39', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('112', '1', '2017-06-09 08:32:41', '173', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('113', '1', '2017-06-09 08:32:44', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('114', '1', '2017-06-09 08:32:44', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('115', '1', '2017-06-09 08:32:46', '64', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=userId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('116', '1', '2017-06-09 08:32:47', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=userId&order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('117', '1', '2017-06-09 08:36:23', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('118', '1', '2017-06-09 08:36:24', '18', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('119', '1', '2017-06-09 08:41:58', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('120', '1', '2017-06-09 08:41:59', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('121', '1', '2017-06-09 08:47:34', '1', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('122', '1', '2017-06-09 08:47:35', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('123', '1', '2017-06-09 08:49:05', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('124', '1', '2017-06-09 08:49:05', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('125', '1', '2017-06-09 08:49:15', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=userIp&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('126', '1', '2017-06-09 08:49:15', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=userIp&order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('127', '1', '2017-06-09 08:50:03', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('128', '1', '2017-06-09 08:50:04', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('129', '1', '2017-06-09 08:50:08', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=method&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('130', '1', '2017-06-09 08:50:09', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=method&order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('131', '1', '2017-06-09 08:50:09', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=method&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('132', '1', '2017-06-09 08:50:10', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=method&order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('133', '1', '2017-06-09 08:50:19', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('134', '1', '2017-06-09 08:50:19', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('135', '1', '2017-06-09 08:50:34', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('136', '1', '2017-06-09 08:50:35', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('137', '1', '2017-06-09 08:50:54', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('138', '1', '2017-06-09 08:50:55', '20', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('139', '1', '2017-06-09 08:52:30', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('140', '1', '2017-06-09 08:52:31', '28', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('141', '1', '2017-06-09 08:52:52', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('142', '1', '2017-06-09 08:52:53', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('143', '1', '2017-06-09 08:53:03', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('144', '1', '2017-06-09 08:53:04', '25', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('145', '1', '2017-06-09 08:53:34', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('146', '1', '2017-06-09 08:53:35', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('147', '1', '2017-06-09 08:53:45', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('148', '1', '2017-06-09 08:53:46', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('149', '1', '2017-06-09 08:53:57', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('150', '1', '2017-06-09 08:53:58', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('151', '1', '2017-06-09 08:54:10', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('152', '1', '2017-06-09 08:54:10', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('153', '1', '2017-06-09 08:54:32', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('154', '1', '2017-06-09 08:54:32', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('155', '1', '2017-06-09 08:55:13', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('156', '1', '2017-06-09 08:55:16', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('157', '1', '2017-06-09 08:55:17', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('158', '1', '2017-06-09 08:56:01', '28', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('159', '1', '2017-06-09 08:56:04', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('160', '1', '2017-06-09 08:56:05', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('161', '1', '2017-06-09 08:56:11', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('162', '1', '2017-06-09 08:56:12', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('163', '1', '2017-06-09 08:59:04', '31', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('164', '1', '2017-06-09 08:59:07', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('165', '1', '2017-06-09 08:59:07', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('166', '1', '2017-06-09 09:00:59', '26', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('167', '1', '2017-06-09 09:01:02', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('168', '1', '2017-06-09 09:01:03', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('169', '1', '2017-06-09 09:01:31', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('170', '1', '2017-06-09 09:01:32', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('171', '1', '2017-06-09 09:02:08', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('172', '1', '2017-06-09 09:02:09', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('173', '1', '2017-06-09 09:02:29', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('174', '1', '2017-06-09 09:02:30', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('175', '1', '2017-06-09 09:03:54', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('176', '1', '2017-06-09 09:03:55', '16', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('177', '1', '2017-06-09 09:04:47', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('178', '1', '2017-06-09 09:04:48', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('179', '1', '2017-06-09 09:05:01', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('180', '1', '2017-06-09 09:05:03', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('181', '1', '2017-06-09 09:05:03', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('182', '1', '2017-06-09 09:05:04', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('183', '1', '2017-06-09 09:05:15', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/list/view');
+INSERT INTO `cms_log` VALUES ('184', '1', '2017-06-09 09:05:16', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/list/');
+INSERT INTO `cms_log` VALUES ('185', '1', '2017-06-09 09:05:17', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getRolePage,[参数]:null', '/system.morning/administrator/role/view');
+INSERT INTO `cms_log` VALUES ('186', '1', '2017-06-09 09:05:18', '30', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:listRole,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/role/');
+INSERT INTO `cms_log` VALUES ('187', '1', '2017-06-09 09:05:18', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorOrganizationController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/organization/view');
+INSERT INTO `cms_log` VALUES ('188', '1', '2017-06-09 09:05:19', '21', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorOrganizationController,[方法]:listOrganization,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/organization/');
+INSERT INTO `cms_log` VALUES ('189', '1', '2017-06-09 09:05:20', '23', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:getInfoPage,[参数]:null', '/system.morning/administrator/info/view');
+INSERT INTO `cms_log` VALUES ('190', '1', '2017-06-09 09:05:21', '26', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:listLogs,[参数]:sort=loginTime&order=desc&offset=0&limit=20&', '/system.morning/administrator/info/logs');
+INSERT INTO `cms_log` VALUES ('191', '1', '2017-06-09 09:06:03', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('192', '1', '2017-06-09 09:06:03', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('193', '1', '2017-06-09 09:06:10', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('194', '1', '2017-06-09 09:06:11', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('195', '1', '2017-06-09 09:06:20', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=spendTime&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('196', '1', '2017-06-09 09:06:21', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=spendTime&order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('197', '1', '2017-06-09 09:06:23', '6', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('198', '1', '2017-06-09 09:06:29', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=20&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('199', '1', '2017-06-09 09:06:32', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('200', '1', '2017-06-09 09:09:01', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('201', '1', '2017-06-09 09:09:01', '19', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('202', '1', '2017-06-09 09:09:29', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('203', '1', '2017-06-09 09:09:30', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('204', '1', '2017-06-09 09:09:54', '29', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('205', '1', '2017-06-09 09:09:57', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('206', '1', '2017-06-09 09:09:57', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('207', '1', '2017-06-09 09:10:23', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('208', '1', '2017-06-09 09:10:26', '24', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemMenuController,[方法]:list,[参数]:null', '/system.morning/system/menu/view');
+INSERT INTO `cms_log` VALUES ('209', '1', '2017-06-09 09:10:36', '26', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('210', '1', '2017-06-09 09:10:37', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:getInfoPage,[参数]:null', '/system.morning/administrator/info/view');
+INSERT INTO `cms_log` VALUES ('211', '1', '2017-06-09 09:10:37', '20', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:listLogs,[参数]:sort=loginTime&order=desc&offset=0&limit=20&', '/system.morning/administrator/info/logs');
+INSERT INTO `cms_log` VALUES ('212', '1', '2017-06-09 09:10:38', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:getRolePage,[参数]:null', '/system.morning/administrator/role/view');
+INSERT INTO `cms_log` VALUES ('213', '1', '2017-06-09 09:10:39', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorRoleController,[方法]:listRole,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/role/');
+INSERT INTO `cms_log` VALUES ('214', '1', '2017-06-09 09:10:40', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/list/view');
+INSERT INTO `cms_log` VALUES ('215', '1', '2017-06-09 09:10:40', '25', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorListController,[方法]:listUser,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/list/');
+INSERT INTO `cms_log` VALUES ('216', '1', '2017-06-09 09:10:42', '1', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorOrganizationController,[方法]:getListPage,[参数]:null', '/system.morning/administrator/organization/view');
+INSERT INTO `cms_log` VALUES ('217', '1', '2017-06-09 09:10:42', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorOrganizationController,[方法]:listOrganization,[参数]:order=desc&offset=0&limit=20&', '/system.morning/administrator/organization/');
+INSERT INTO `cms_log` VALUES ('218', '1', '2017-06-09 09:10:53', '33', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('219', '1', '2017-06-09 09:10:55', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('220', '1', '2017-06-09 09:10:55', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('221', '1', '2017-06-09 09:12:38', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=20&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('222', '1', '2017-06-09 09:12:53', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:search=&sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('223', '1', '2017-06-09 09:12:56', '19', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:search=&sort=logId&order=desc&offset=0&limit=200&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('224', '1', '2017-06-09 09:13:18', '17', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:search=&sort=logId&order=desc&offset=0&limit=200&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('225', '1', '2017-06-09 09:13:24', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:search=&sort=logId&order=asc&offset=0&limit=200&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('226', '1', '2017-06-09 09:13:25', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:search=&sort=logId&order=desc&offset=0&limit=200&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('227', '1', '2017-06-09 09:22:27', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('228', '1', '2017-06-09 09:22:28', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('229', '1', '2017-06-09 09:22:47', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('230', '1', '2017-06-09 09:22:52', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('231', '1', '2017-06-09 09:23:43', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('232', '1', '2017-06-09 09:23:46', '27', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('233', '1', '2017-06-09 09:23:48', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('234', '1', '2017-06-09 09:25:55', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('235', '1', '2017-06-09 09:25:56', '13', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('236', '1', '2017-06-09 09:26:07', '22', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('237', '1', '2017-06-09 09:26:18', '29', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.webfront.WebFrontController,[方法]:index,[参数]:null', '/system.morning/index');
+INSERT INTO `cms_log` VALUES ('238', '1', '2017-06-09 09:26:20', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('239', '1', '2017-06-09 09:26:21', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('240', '1', '2017-06-09 09:35:08', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('241', '1', '2017-06-09 09:35:09', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('242', '1', '2017-06-09 09:35:36', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('243', '1', '2017-06-09 09:35:37', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('244', '1', '2017-06-09 09:37:14', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('245', '1', '2017-06-09 09:37:14', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('246', '1', '2017-06-09 09:37:18', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=desc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('247', '1', '2017-06-09 09:37:18', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('248', '1', '2017-06-09 09:37:23', '7', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=asc&offset=20&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('249', '1', '2017-06-09 09:37:25', '5', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=asc&offset=30&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('250', '1', '2017-06-09 09:37:26', '8', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=logId&order=asc&offset=40&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('251', '1', '2017-06-09 09:37:42', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('252', '1', '2017-06-09 09:37:43', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('253', '1', '2017-06-09 09:39:26', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('254', '1', '2017-06-09 09:39:26', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('255', '1', '2017-06-09 09:40:32', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('256', '1', '2017-06-09 09:40:33', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('257', '1', '2017-06-09 09:42:40', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('258', '1', '2017-06-09 09:42:41', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('259', '1', '2017-06-09 09:42:43', '16', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=100&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('260', '1', '2017-06-09 09:42:46', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=10&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('261', '1', '2017-06-09 09:43:00', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('262', '1', '2017-06-09 09:43:01', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('263', '1', '2017-06-09 09:43:02', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:sort=spendTime&order=desc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('264', '1', '2017-06-09 09:44:20', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('265', '1', '2017-06-09 09:44:20', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('266', '1', '2017-06-09 09:44:27', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('267', '1', '2017-06-09 09:44:27', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('268', '1', '2017-06-09 09:44:41', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('269', '1', '2017-06-09 09:44:42', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('270', '1', '2017-06-09 09:45:23', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('271', '1', '2017-06-09 09:45:23', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('272', '1', '2017-06-09 09:45:36', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('273', '1', '2017-06-09 09:45:37', '16', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('274', '1', '2017-06-09 09:45:41', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('275', '1', '2017-06-09 09:45:41', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('276', '1', '2017-06-09 09:45:52', '0', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:list,[参数]:null', '/system.morning/system/log/view');
+INSERT INTO `cms_log` VALUES ('277', '1', '2017-06-09 09:45:53', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('278', '1', '2017-06-09 09:45:59', '12', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=20&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('279', '1', '2017-06-09 09:46:00', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=40&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('280', '1', '2017-06-09 09:46:00', '9', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=60&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('281', '1', '2017-06-09 09:46:01', '10', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=80&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('282', '1', '2017-06-09 09:46:01', '14', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=240&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('283', '1', '2017-06-09 09:46:03', '11', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.system.SystemLogController,[方法]:listUser,[参数]:order=asc&offset=0&limit=20&', '/system.morning/system/log/');
+INSERT INTO `cms_log` VALUES ('284', '1', '2017-06-09 09:46:31', '19', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:getInfoPage,[参数]:null', '/system.morning/administrator/info/view');
+INSERT INTO `cms_log` VALUES ('285', '1', '2017-06-09 09:46:32', '15', 'GET', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', '172.27.251.29', '[类名]:org.pussinboots.morning.cms.controller.administrator.AdministratorInfoController,[方法]:listLogs,[参数]:sort=loginTime&order=desc&offset=0&limit=20&', '/system.morning/administrator/info/logs');
 
 -- ----------------------------
 -- Table structure for cms_menu
@@ -36,7 +311,7 @@ CREATE TABLE `cms_menu` (
   `update_by` varchar(64) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '更新者',
   `remarks` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8 COMMENT='目录表';
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8 COMMENT='目录表';
 
 -- ----------------------------
 -- Records of cms_menu
@@ -67,17 +342,17 @@ INSERT INTO `cms_menu` VALUES ('23', '22', '0', 'grade_view', '查看', '1', '/s
 INSERT INTO `cms_menu` VALUES ('24', '22', '0', 'grade_edit', '编辑', '2', '/system/user/grade/edit', null, '1', 'user:grade:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('25', '16', '2', 'record', '会员记录管理', '30', '/system/user/record/view', '', '1', '', '2016-10-23 17:24:24', '系统管理员', '2016-10-23 17:24:29', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('26', '25', '0', 'record_view', '查看', '1', '/system/user/record/view', '', '1', 'user:record:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('27', '1', '1', 'goods', '产品管理', '400', '/system/goods', 'product-hunt', '1', null, '2016-10-23 17:08:23', '系统管理员', '2016-10-23 17:08:27', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('28', '27', '2', 'list', '产品列表', '10', '/system/goods/list', '', '1', '', '2016-10-23 17:24:24', '系统管理员', '2016-10-23 17:24:29', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('29', '28', '0', 'list_view', '查看', '1', '/system/goods/list/view', null, '1', 'goods:list:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('30', '28', '0', 'list_edit', '编辑', '2', '/system/goods/list/edit', null, '1', 'goods:list:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('31', '28', '0', 'list_delete', '删除', '3', '/system/goods/list/delete', null, '1', 'goods:list:delete', '2016-10-23 17:48:40', '系统管理员', '2016-10-23 17:48:47', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('32', '28', '0', 'list_add', '添加', '4', '/system/goods/list/add', null, '1', 'goods:list:add', '2016-10-23 17:50:45', '系统管理员', '2016-10-23 17:50:52', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('33', '27', '2', 'classify', '分类管理', '20', '/system/goods/classify', '', '1', '', '2016-10-23 17:24:24', '系统管理员', '2016-10-23 17:24:29', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('34', '33', '0', 'classify_view', '查看', '1', '/system/goods/classify/view', null, '1', 'goods:classify:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('35', '33', '0', 'classify_edit', '编辑', '2', '/system/goods/classify/edit', null, '1', 'goods:classify:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('36', '33', '0', 'classify_delete', '删除', '3', '/system/goods/classify/delete', null, '1', 'goods:classify:delete', '2016-10-23 17:48:40', '系统管理员', '2016-10-23 17:48:47', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('37', '33', '0', 'classify_add', '添加', '4', '/system/goods/classify/add', null, '1', 'goods:classify:add', '2016-10-23 17:50:45', '系统管理员', '2016-10-23 17:50:52', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('27', '1', '1', 'product', '产品管理', '400', '/product', 'product-hunt', '1', null, '2016-10-23 17:08:23', '系统管理员', '2017-05-20 06:58:07', '猫宁', '');
+INSERT INTO `cms_menu` VALUES ('28', '27', '2', 'list', '产品列表', '10', '/product/list/view', 'fax', '1', '', '2016-10-23 17:24:24', '系统管理员', '2017-05-20 07:00:31', '猫宁', '');
+INSERT INTO `cms_menu` VALUES ('29', '28', '0', 'list_view', '查看', '1', '/product/list/view', null, '1', 'product:list:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('30', '28', '0', 'list_edit', '编辑', '2', '/product/list/edit', null, '1', 'product:list:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('31', '28', '0', 'list_delete', '删除', '3', '/product/list/delete', null, '1', 'product:list:delete', '2016-10-23 17:48:40', '系统管理员', '2016-10-23 17:48:47', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('32', '28', '0', 'list_add', '添加', '4', '/product/list/add', null, '1', 'product:list:add', '2016-10-23 17:50:45', '系统管理员', '2016-10-23 17:50:52', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('33', '27', '2', 'category', '分类管理', '20', '/product/category/view', 'object-ungroup', '1', '', '2016-10-23 17:24:24', '系统管理员', '2017-05-20 07:04:06', '猫宁', '');
+INSERT INTO `cms_menu` VALUES ('34', '33', '0', 'category_view', '查看', '1', '/product/category/view', null, '1', 'product:category:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('35', '33', '0', 'category_edit', '编辑', '2', '/product/category/edit', null, '1', 'product:category:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('36', '33', '0', 'category_delete', '删除', '3', '/product/category/delete', null, '1', 'product:category:delete', '2016-10-23 17:48:40', '系统管理员', '2016-10-23 17:48:47', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('37', '33', '0', 'category_create', '添加', '4', '/product/category/create', '', '1', 'product:category:create', '2016-10-23 17:50:45', '系统管理员', '2017-06-07 17:01:10', '猫宁', '');
 INSERT INTO `cms_menu` VALUES ('38', '27', '2', 'query', '问答管理', '30', '/system/goods/query', '', '1', '', '2016-10-23 17:24:24', '系统管理员', '2016-10-23 17:24:29', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('39', '38', '0', 'query_view', '查看', '1', '/system/goods/query/view', null, '1', 'goods:query:view', '2016-10-23 17:46:12', '系统管理员', '2016-10-23 17:46:18', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('40', '38', '0', 'query_edit', '编辑', '2', '/system/goods/query/edit', null, '1', 'goods:query:edit', '2016-10-23 17:47:14', '系统管理员', '2016-10-23 17:47:23', '系统管理员', null);
@@ -100,7 +375,7 @@ INSERT INTO `cms_menu` VALUES ('65', '1', '1', 'system', '系统管理', '700', 
 INSERT INTO `cms_menu` VALUES ('66', '65', '2', 'menu', '菜单管理', '10', '/system/menu/view', 'file-text', '1', '', '2016-10-23 17:24:24', '系统管理员', '2016-12-08 17:22:33', '猫宁', '');
 INSERT INTO `cms_menu` VALUES ('69', '3', '0', 'list_audit', '审查', '5', '/administrator/list/audit', '', '1', 'administrator:list:audit', '2016-10-25 17:25:29', '系统管理员', '2016-10-25 17:25:35', '系统管理员', '');
 INSERT INTO `cms_menu` VALUES ('70', '17', '0', 'list_audit', '审查', '5', '/system/user/list/audit', null, '1', 'user:list:audit', '2016-10-25 17:25:29', '系统管理员', '2016-10-25 17:25:35', '系统管理员', null);
-INSERT INTO `cms_menu` VALUES ('72', '28', '0', 'list_audit', '审查', '5', '/system/goods/list/audit', null, '1', 'goods:list:audit', '2016-10-25 17:25:29', '系统管理员', '2016-10-25 17:25:35', '系统管理员', null);
+INSERT INTO `cms_menu` VALUES ('72', '28', '0', 'list_audit', '审查', '5', '/product/list/audit', null, '1', 'product:list:audit', '2016-10-25 17:25:29', '系统管理员', '2016-10-25 17:25:35', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('74', '66', '0', 'menu_view', '查看', '1', '/system/menu/view', null, '1', 'system:menu:view', '2016-12-05 16:08:59', '系统管理员', '2016-12-05 16:09:05', '系统管理员', null);
 INSERT INTO `cms_menu` VALUES ('75', '66', '0', 'menu_edit', '编辑', '2', '/system/menu/edit', '', '1', 'system:menu:edit', '2016-12-05 16:08:59', '系统管理员', '2016-12-10 06:45:32', '猫宁', '');
 INSERT INTO `cms_menu` VALUES ('76', '66', '0', 'menu_delete', '删除', '3', '/system/menu/delete', null, '1', 'system:menu:delete', '2016-12-05 16:08:59', '系统管理员', '2016-12-05 16:09:05', '系统管理员', null);
@@ -129,6 +404,10 @@ INSERT INTO `cms_menu` VALUES ('103', '101', '0', 'advert_edit', '编辑', '2', 
 INSERT INTO `cms_menu` VALUES ('104', '101', '0', 'advert_delete', '删除', '3', '/online/advert/delete', '', '1', 'online:advert:delete', '2017-05-11 07:32:12', '猫宁', null, null, '');
 INSERT INTO `cms_menu` VALUES ('105', '101', '0', 'advert_add', '添加', '4', '/online/advert/create', '', '1', 'online:advert:create', '2017-05-11 07:33:00', '猫宁', null, null, '');
 INSERT INTO `cms_menu` VALUES ('106', '101', '0', 'advert_audit', '审查', '5', '/online/advert/audit', '', '1', 'online:advert:audit', '2017-05-11 07:33:47', '猫宁', null, null, '');
+INSERT INTO `cms_menu` VALUES ('107', '33', '0', 'category_audit', '审查', '5', '/product/category/audit', '', '1', 'product:category:audit', '2017-05-20 07:05:27', '猫宁', null, null, '');
+INSERT INTO `cms_menu` VALUES ('108', '65', '2', 'druid', '数据监控', '40', '/druid', 'cc-jcb', '1', null, '2017-06-08 11:00:37', '猫宁', null, null, '');
+INSERT INTO `cms_menu` VALUES ('109', '65', '2', 'log', '日志记录', '50', '/system/log/view', 'file-text', '1', '', '2017-06-09 04:46:38', '猫宁', null, null, '');
+INSERT INTO `cms_menu` VALUES ('110', '109', '0', 'log_view', '查看', '1', '/system/log/view', '', '1', 'system:log:view', '2017-06-09 04:48:47', '猫宁', null, null, '');
 
 -- ----------------------------
 -- Table structure for cms_organization
@@ -174,7 +453,7 @@ CREATE TABLE `cms_role` (
 -- ----------------------------
 -- Records of cms_role
 -- ----------------------------
-INSERT INTO `cms_role` VALUES ('1', '超级管理员', 'admin', '0', '1', '2016-10-23 14:26:47', '猫宁管理员', '2017-05-11 07:33:56', '猫宁', '超级管理员，拥有系统所有的权力！');
+INSERT INTO `cms_role` VALUES ('1', '超级管理员', 'admin', '0', '1', '2016-10-23 14:26:47', '猫宁管理员', '2017-06-09 05:05:26', '猫宁', '超级管理员，拥有系统所有的权力！');
 INSERT INTO `cms_role` VALUES ('3', '角色管理员', 'role', '1', '1', '2017-02-07 16:20:21', '猫宁', '2017-04-07 02:46:35', '猫宁', '角色管理员，只能修改、创建角色');
 INSERT INTO `cms_role` VALUES ('4', '测试管理员', 'test', '0', '0', '2017-04-07 01:59:32', '猫宁', '2017-04-07 11:47:59', '猫宁', '测试管理员');
 
@@ -189,7 +468,7 @@ CREATE TABLE `cms_role_menu` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `create_by` varchar(64) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '创建者',
   PRIMARY KEY (`role_menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3449 DEFAULT CHARSET=utf8 COMMENT='角色权限关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=3699 DEFAULT CHARSET=utf8 COMMENT='角色权限关联表';
 
 -- ----------------------------
 -- Records of cms_role_menu
@@ -291,87 +570,91 @@ INSERT INTO `cms_role_menu` VALUES ('3067', '4', '77', '2017-04-07 11:47:59', '�
 INSERT INTO `cms_role_menu` VALUES ('3068', '4', '78', '2017-04-07 11:47:59', '猫宁');
 INSERT INTO `cms_role_menu` VALUES ('3069', '4', '84', '2017-04-07 11:47:59', '猫宁');
 INSERT INTO `cms_role_menu` VALUES ('3070', '4', '85', '2017-04-07 11:47:59', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3368', '1', '1', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3369', '1', '2', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3370', '1', '8', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3371', '1', '9', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3372', '1', '10', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3373', '1', '3', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3374', '1', '4', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3375', '1', '5', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3376', '1', '6', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3377', '1', '7', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3378', '1', '69', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3379', '1', '11', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3380', '1', '12', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3381', '1', '13', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3382', '1', '14', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3383', '1', '15', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3384', '1', '83', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3385', '1', '86', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3386', '1', '87', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3387', '1', '88', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3388', '1', '89', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3389', '1', '91', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3390', '1', '90', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3391', '1', '16', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3392', '1', '17', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3393', '1', '18', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3394', '1', '19', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3395', '1', '20', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3396', '1', '21', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3397', '1', '70', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3398', '1', '22', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3399', '1', '23', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3400', '1', '24', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3401', '1', '25', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3402', '1', '26', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3403', '1', '27', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3404', '1', '28', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3405', '1', '29', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3406', '1', '30', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3407', '1', '31', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3408', '1', '32', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3409', '1', '72', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3410', '1', '33', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3411', '1', '34', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3412', '1', '35', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3413', '1', '36', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3414', '1', '37', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3415', '1', '38', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3416', '1', '39', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3417', '1', '40', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3418', '1', '41', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3419', '1', '42', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3420', '1', '43', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3421', '1', '44', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3422', '1', '45', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3423', '1', '46', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3424', '1', '47', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3425', '1', '48', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3426', '1', '94', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3427', '1', '95', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3428', '1', '96', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3429', '1', '97', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3430', '1', '98', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3431', '1', '99', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3432', '1', '100', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3433', '1', '101', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3434', '1', '102', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3435', '1', '103', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3436', '1', '104', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3437', '1', '105', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3438', '1', '106', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3439', '1', '65', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3440', '1', '66', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3441', '1', '74', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3442', '1', '75', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3443', '1', '76', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3444', '1', '77', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3445', '1', '78', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3446', '1', '84', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3447', '1', '85', '2017-05-11 07:33:56', '猫宁');
-INSERT INTO `cms_role_menu` VALUES ('3448', '1', '93', '2017-05-11 07:33:56', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3614', '1', '1', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3615', '1', '2', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3616', '1', '8', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3617', '1', '9', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3618', '1', '10', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3619', '1', '3', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3620', '1', '4', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3621', '1', '5', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3622', '1', '6', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3623', '1', '7', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3624', '1', '69', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3625', '1', '11', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3626', '1', '12', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3627', '1', '13', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3628', '1', '14', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3629', '1', '15', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3630', '1', '83', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3631', '1', '86', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3632', '1', '87', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3633', '1', '88', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3634', '1', '89', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3635', '1', '91', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3636', '1', '90', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3637', '1', '16', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3638', '1', '17', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3639', '1', '18', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3640', '1', '19', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3641', '1', '20', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3642', '1', '21', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3643', '1', '70', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3644', '1', '22', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3645', '1', '23', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3646', '1', '24', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3647', '1', '25', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3648', '1', '26', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3649', '1', '27', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3650', '1', '28', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3651', '1', '29', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3652', '1', '30', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3653', '1', '31', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3654', '1', '32', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3655', '1', '72', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3656', '1', '33', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3657', '1', '34', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3658', '1', '35', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3659', '1', '36', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3660', '1', '37', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3661', '1', '107', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3662', '1', '38', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3663', '1', '39', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3664', '1', '40', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3665', '1', '41', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3666', '1', '42', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3667', '1', '43', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3668', '1', '44', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3669', '1', '45', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3670', '1', '46', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3671', '1', '47', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3672', '1', '48', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3673', '1', '94', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3674', '1', '95', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3675', '1', '96', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3676', '1', '97', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3677', '1', '98', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3678', '1', '99', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3679', '1', '100', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3680', '1', '101', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3681', '1', '102', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3682', '1', '103', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3683', '1', '104', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3684', '1', '105', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3685', '1', '106', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3686', '1', '65', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3687', '1', '66', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3688', '1', '74', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3689', '1', '75', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3690', '1', '76', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3691', '1', '77', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3692', '1', '78', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3693', '1', '84', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3694', '1', '85', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3695', '1', '93', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3696', '1', '108', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3697', '1', '109', '2017-06-09 05:05:26', '猫宁');
+INSERT INTO `cms_role_menu` VALUES ('3698', '1', '110', '2017-06-09 05:05:26', '猫宁');
 
 -- ----------------------------
 -- Table structure for cms_user
@@ -403,7 +686,7 @@ CREATE TABLE `cms_user` (
 -- ----------------------------
 -- Records of cms_user
 -- ----------------------------
-INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'd81c31b9348c3da513177a781703767e', 'Dts7jk', '猫宁', '陈星星', '2', '22', 'default/avatar/avatar_2.jpg', '1', '810170512@qq.com', '18857105127', '2017-05-11 07:34:11', '172.27.150.88', '2016-10-27 23:11:43', '穿鞋子的猫', '2017-04-07 11:45:55', '猫宁');
+INSERT INTO `cms_user` VALUES ('1', '1', 'admin', 'd81c31b9348c3da513177a781703767e', 'Dts7jk', '猫宁', '陈星星', '0', '22', 'images/avatar/20170605/1496676224080.jpg', '1', '810170512@qq.com', '18857105127', '2017-06-09 08:29:52', '172.27.251.29', '2016-10-27 23:11:43', '穿鞋子的猫', '2017-06-09 03:46:28', '猫宁');
 INSERT INTO `cms_user` VALUES ('14', '4', 'test', 'aa7b19dfac77ec06a669c6a3d44f3c82', 'oFkuwy', '大撒旦', '阿萨德', '1', '0', 'default/avatar/avatar_6.jpg', '1', '15632831549@qq.com', '18857105127', null, null, '2017-04-06 12:55:44', '猫宁', '2017-04-07 05:04:52', '猫宁');
 
 -- ----------------------------
@@ -418,7 +701,7 @@ CREATE TABLE `cms_user_login_log` (
   `operating_system` varchar(50) DEFAULT NULL COMMENT '操作系统',
   `browser` varchar(50) DEFAULT NULL COMMENT '浏览器',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=255 DEFAULT CHARSET=utf8 COMMENT='管理员登陆表';
+) ENGINE=InnoDB AUTO_INCREMENT=299 DEFAULT CHARSET=utf8 COMMENT='管理员登陆表';
 
 -- ----------------------------
 -- Records of cms_user_login_log
@@ -660,6 +943,50 @@ INSERT INTO `cms_user_login_log` VALUES ('251', '2017-05-11 03:02:04', '172.27.1
 INSERT INTO `cms_user_login_log` VALUES ('252', '2017-05-11 07:18:25', '172.27.150.88', '1', 'WINDOWS_10', 'CHROME45');
 INSERT INTO `cms_user_login_log` VALUES ('253', '2017-05-11 07:28:34', '172.27.150.88', '1', 'WINDOWS_10', 'CHROME45');
 INSERT INTO `cms_user_login_log` VALUES ('254', '2017-05-11 07:34:11', '172.27.150.88', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('255', '2017-05-14 14:49:52', '172.27.15.122', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('256', '2017-05-18 23:17:30', '172.27.143.119', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('257', '2017-05-18 23:20:10', '172.27.143.119', '1', 'MAC_OS_X_IPHONE', 'APPLE_WEB_KIT');
+INSERT INTO `cms_user_login_log` VALUES ('258', '2017-05-19 23:42:58', '172.27.174.129', '1', 'WINDOWS_10', 'EDGE14');
+INSERT INTO `cms_user_login_log` VALUES ('259', '2017-05-20 06:56:02', '172.27.186.58', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('260', '2017-05-20 07:33:08', '172.27.186.58', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('261', '2017-05-23 03:33:15', '192.168.1.112', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('262', '2017-06-04 06:19:23', '172.27.101.218', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('263', '2017-06-04 06:43:00', '172.27.101.218', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('264', '2017-06-04 06:55:34', '172.27.101.218', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('265', '2017-06-04 12:53:24', '172.27.109.28', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('266', '2017-06-04 13:27:31', '172.27.109.28', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('267', '2017-06-04 16:11:35', '172.29.138.207', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('268', '2017-06-05 13:55:56', '172.27.143.224', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('269', '2017-06-05 14:24:38', '172.27.143.224', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('270', '2017-06-05 14:31:13', '172.27.143.224', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('271', '2017-06-05 15:16:39', '172.29.138.207', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('272', '2017-06-05 15:26:30', '172.29.138.207', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('273', '2017-06-07 16:17:03', '172.18.57.5', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('274', '2017-06-07 16:21:04', '172.18.57.5', '1', 'WINDOWS_10', 'CHROME');
+INSERT INTO `cms_user_login_log` VALUES ('275', '2017-06-07 16:37:07', '172.18.57.5', '1', 'WINDOWS_10', 'CHROME');
+INSERT INTO `cms_user_login_log` VALUES ('276', '2017-06-07 17:01:43', '172.18.57.5', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('277', '2017-06-08 06:48:14', '172.27.222.66', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('278', '2017-06-08 07:05:17', '172.27.222.66', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('279', '2017-06-08 07:43:35', '172.27.222.66', '1', 'WINDOWS_10', 'CHROME');
+INSERT INTO `cms_user_login_log` VALUES ('280', '2017-06-08 07:54:32', '172.27.222.66', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('281', '2017-06-08 10:59:00', '172.27.222.66', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('282', '2017-06-09 03:31:14', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('283', '2017-06-09 03:40:15', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('284', '2017-06-09 03:50:51', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('285', '2017-06-09 03:51:40', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('286', '2017-06-09 03:53:30', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('287', '2017-06-09 03:55:55', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('288', '2017-06-09 03:57:45', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('289', '2017-06-09 04:00:09', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('290', '2017-06-09 04:05:31', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('291', '2017-06-09 04:18:07', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('292', '2017-06-09 04:19:14', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('293', '2017-06-09 04:20:21', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('294', '2017-06-09 04:27:01', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('295', '2017-06-09 04:45:21', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('296', '2017-06-09 05:05:09', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('297', '2017-06-09 05:09:36', '172.27.242.254', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `cms_user_login_log` VALUES ('298', '2017-06-09 08:29:52', '172.27.251.29', '1', 'WINDOWS_10', 'CHROME45');
 
 -- ----------------------------
 -- Table structure for cms_user_role
@@ -692,7 +1019,7 @@ CREATE TABLE `cms_version_log` (
   `log_title` varchar(255) DEFAULT NULL COMMENT '日志标题',
   `log_content` text COMMENT '日志内容',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=utf8 COMMENT='系统日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=151 DEFAULT CHARSET=utf8 COMMENT='系统日志表';
 
 -- ----------------------------
 -- Records of cms_version_log
@@ -841,6 +1168,12 @@ INSERT INTO `cms_version_log` VALUES ('141', '2017-04-13 23:26:38', '陈星星',
 INSERT INTO `cms_version_log` VALUES ('142', '2017-05-09 22:27:10', '陈星星', '整合分页插件以及分页接口', '<div>1.商品评论页面迁移完毕</div><div>2.个人中心页面迁移完毕</div><div>3.收藏的商品页面迁移完毕</div><div>4.整合分页插件以及分页接口</div><div>5.收货地址列表迁移完毕</div>');
 INSERT INTO `cms_version_log` VALUES ('143', '2017-05-10 00:27:24', '陈星星', '订单详情页面搭建完毕', '<div>1.收货地址全部迁移完毕</div><div>2.我的订单迁移完毕</div><div>3.订单详情页面搭建完毕</div><div>4.购物车页面迁移完毕</div><div>5.订单确认页面迁移完毕</div>');
 INSERT INTO `cms_version_log` VALUES ('144', '2017-05-11 23:28:11', '陈星星', '商品提问点赞功能实现', '<div>1.修改送货时间</div><div>2.导航栏购物车迁移完毕</div><div>3.商品提问功能实现</div><div>4.商品提问点赞功能实现</div><div>5.评论点赞功能实现</div>');
+INSERT INTO `cms_version_log` VALUES ('145', '2017-05-15 17:51:12', '陈星星', '评价回复功能实现', '1.评价回复功能实现');
+INSERT INTO `cms_version_log` VALUES ('146', '2017-06-04 17:51:51', '陈星星', '商品类目管理初步搭建', '1.商品类目管理初步搭建');
+INSERT INTO `cms_version_log` VALUES ('147', '2017-06-06 22:54:49', '陈星星', '商品类目类目相关功能实现', '<div>1.商品类目状态管理</div><div>2.商品类目类目修改初步搭建</div>');
+INSERT INTO `cms_version_log` VALUES ('148', '2017-06-07 20:54:41', '陈星星', '分类管理编辑类目功能实现', '1.分类管理编辑类目功能实现');
+INSERT INTO `cms_version_log` VALUES ('149', '2017-06-08 17:55:44', '陈星星', '修复idea启动异常BUG', '<div>1.修复idea启动项目，商城显示404的BUG</div><div>2.修复idea环境下，mapper.xml找不到的BUG</div><div>3.分类管理创建分类功能实现</div><div>4.统一日志输出，修复idea环境下控制台不输出日志bug</div><div>5.druid数据监控配置</div>');
+INSERT INTO `cms_version_log` VALUES ('150', '2017-06-09 17:56:11', '陈星星', '切面日志系统', '<div>1.日志切面设置日志记录系统</div><div>2.日志查看功能实现</div><div>3.去除后台登录加密</div>');
 
 -- ----------------------------
 -- Table structure for os_address
@@ -970,41 +1303,43 @@ CREATE TABLE `os_category` (
   `page_keyword` varchar(64) DEFAULT NULL COMMENT '页面关键词',
   `remarks` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='分类表';
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='分类表';
 
 -- ----------------------------
 -- Records of os_category
 -- ----------------------------
 INSERT INTO `os_category` VALUES ('1', '0', '全部商品', null, '0', '1', '0', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '全部商品', null, null, null);
-INSERT INTO `os_category` VALUES ('2', '1', '手机', '100', '1', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '手机', null, null, null);
-INSERT INTO `os_category` VALUES ('3', '1', '智能硬件', '200', '1', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能硬件', null, null, null);
-INSERT INTO `os_category` VALUES ('4', '1', '笔记本  平板', '300', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '笔记本/平板', null, null, null);
+INSERT INTO `os_category` VALUES ('2', '1', '手机', '100', '1', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-06-08 07:06:07', '猫宁', '手机', '小米手机,超乎你的想象,性能超级棒;小米手机,超乎你的想象,性能超级棒.', '小米手机,超乎你的想象,性能超级棒', '小米手机');
+INSERT INTO `os_category` VALUES ('3', '1', '智能硬件', '200', '1', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-06-08 06:51:01', '猫宁', '智能硬件', null, null, '');
+INSERT INTO `os_category` VALUES ('4', '1', '笔记本  平板', '300', '1', '1', '1', '0', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '笔记本/平板', null, null, null);
 INSERT INTO `os_category` VALUES ('5', '1', '路由器  移动电源', '400', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '路由器/移动电源', null, null, null);
 INSERT INTO `os_category` VALUES ('6', '1', '周边配件', '500', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '周边配件', null, null, null);
 INSERT INTO `os_category` VALUES ('7', '1', '耳机  音响', '600', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '耳机/音响', null, null, null);
 INSERT INTO `os_category` VALUES ('8', '1', '保护套  贴膜', '700', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '保护套/贴膜', null, null, null);
 INSERT INTO `os_category` VALUES ('9', '1', '生活周边', '800', '1', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '生活周边', null, null, null);
-INSERT INTO `os_category` VALUES ('10', '3', '手环及配件', '10', '2', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '手环及配件', null, null, null);
-INSERT INTO `os_category` VALUES ('11', '3', '智能灯', '20', '2', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能健康', null, null, null);
-INSERT INTO `os_category` VALUES ('12', '3', '智能家居', '30', '2', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能家居', null, null, null);
-INSERT INTO `os_category` VALUES ('13', '3', '智能健康', '40', '2', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能出行', null, null, null);
-INSERT INTO `os_category` VALUES ('15', '4', '笔记本电脑', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '笔记本电脑', null, null, null);
-INSERT INTO `os_category` VALUES ('16', '4', '平板电脑', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '平板电脑', null, null, null);
-INSERT INTO `os_category` VALUES ('17', '5', '路由器', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '路由器', null, null, null);
-INSERT INTO `os_category` VALUES ('18', '5', '移动电源', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动电源', null, null, null);
-INSERT INTO `os_category` VALUES ('19', '5', '路由器配件', '30', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '路由器配件', null, null, null);
-INSERT INTO `os_category` VALUES ('20', '6', '插线板', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '插线板', null, null, null);
-INSERT INTO `os_category` VALUES ('21', '6', '存储卡', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '存储卡', null, null, null);
-INSERT INTO `os_category` VALUES ('22', '6', '移动硬盘', '30', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动硬盘', null, null, null);
-INSERT INTO `os_category` VALUES ('23', '7', '头戴式耳机', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '头戴式耳机', null, null, null);
-INSERT INTO `os_category` VALUES ('24', '7', '活塞耳机', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '活塞耳机', null, null, null);
-INSERT INTO `os_category` VALUES ('25', '7', '蓝牙耳机', '30', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '蓝牙耳机', null, null, null);
-INSERT INTO `os_category` VALUES ('26', '7', '音响', '40', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '音响', null, null, null);
-INSERT INTO `os_category` VALUES ('27', '8', '贴膜', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '贴膜', null, null, null);
-INSERT INTO `os_category` VALUES ('28', '8', '保护套  保护壳', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '保护套/保护壳', null, null, null);
-INSERT INTO `os_category` VALUES ('29', '8', '移动电源保护套', '30', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动电源保护套', null, null, null);
-INSERT INTO `os_category` VALUES ('30', '9', '箱包', '10', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '箱包', null, null, null);
-INSERT INTO `os_category` VALUES ('31', '9', '服装', '20', '2', '1', '1', '1', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '服装', null, null, null);
+INSERT INTO `os_category` VALUES ('10', '3', '手环及配件', '10', '2', '1', '1', '1', '1', '2017-02-25 21:44:43', '猫宁', '2017-06-08 06:48:38', '猫宁', '手环及配件', '手环及配件', '手环及配件', '手环及配件');
+INSERT INTO `os_category` VALUES ('11', '3', '智能灯', '20', '2', '1', '1', '0', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能健康', null, null, null);
+INSERT INTO `os_category` VALUES ('12', '3', '智能家居', '30', '2', '1', '1', '0', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能家居', null, null, null);
+INSERT INTO `os_category` VALUES ('13', '3', '智能健康', '40', '2', '1', '1', '0', '1', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '智能出行', null, null, null);
+INSERT INTO `os_category` VALUES ('15', '4', '笔记本电脑', '10', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '笔记本电脑', null, null, null);
+INSERT INTO `os_category` VALUES ('16', '4', '平板电脑', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '平板电脑', null, null, null);
+INSERT INTO `os_category` VALUES ('17', '5', '路由器', '10', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '路由器', null, null, null);
+INSERT INTO `os_category` VALUES ('18', '5', '移动电源', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动电源', null, null, null);
+INSERT INTO `os_category` VALUES ('19', '5', '路由器配件', '30', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '路由器配件', null, null, null);
+INSERT INTO `os_category` VALUES ('20', '6', '插线板', '10', '2', '0', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '插线板', null, null, null);
+INSERT INTO `os_category` VALUES ('21', '6', '存储卡', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '存储卡', null, null, null);
+INSERT INTO `os_category` VALUES ('22', '6', '移动硬盘', '30', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动硬盘', null, null, null);
+INSERT INTO `os_category` VALUES ('23', '7', '头戴式耳机', '10', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '头戴式耳机', null, null, null);
+INSERT INTO `os_category` VALUES ('24', '7', '活塞耳机', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '活塞耳机', null, null, null);
+INSERT INTO `os_category` VALUES ('25', '7', '蓝牙耳机', '30', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '蓝牙耳机', null, null, null);
+INSERT INTO `os_category` VALUES ('26', '7', '音响', '40', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '音响', null, null, null);
+INSERT INTO `os_category` VALUES ('27', '8', '贴膜', '10', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '贴膜', null, null, null);
+INSERT INTO `os_category` VALUES ('28', '8', '保护套  保护壳', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '保护套/保护壳', null, null, null);
+INSERT INTO `os_category` VALUES ('29', '8', '移动电源保护套', '30', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '移动电源保护套', null, null, null);
+INSERT INTO `os_category` VALUES ('30', '9', '箱包', '10', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-02-25 21:44:48', '猫宁', '箱包', null, null, null);
+INSERT INTO `os_category` VALUES ('31', '9', '服装', '20', '2', '1', '1', '0', '0', '2017-02-25 21:44:43', '猫宁', '2017-06-08 07:05:56', '猫宁', '服装', null, null, '');
+INSERT INTO `os_category` VALUES ('32', '1', '智能家电', '900', '1', '0', '0', '0', '0', '2017-06-08 07:38:02', '猫宁', '2017-06-08 07:41:23', '猫宁', '智能家电', '智能家电', '智能家电', '智能家电');
+INSERT INTO `os_category` VALUES ('33', '2', '小米手机', '10', '2', '1', '1', '1', '1', '2017-06-08 07:44:39', '猫宁', null, null, '小米手机', '小米手机', '小米手机', '小米手机');
 
 -- ----------------------------
 -- Table structure for os_category_advert
@@ -1101,7 +1436,7 @@ CREATE TABLE `os_comment_reply` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `update_by` varchar(64) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '更新者',
   PRIMARY KEY (`comment_reply_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='评论回复表';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='评论回复表';
 
 -- ----------------------------
 -- Records of os_comment_reply
@@ -1110,6 +1445,17 @@ INSERT INTO `os_comment_reply` VALUES ('1', '8', '1', '猫宁', 'default/avatar/
 INSERT INTO `os_comment_reply` VALUES ('2', '8', '1', '猫宁', 'default/avatar/avatar_4.jpg', '测试2', '0', '1', '0', '2017-03-04 15:42:00', null, null, null);
 INSERT INTO `os_comment_reply` VALUES ('3', '8', '1', '猫宁', 'default/avatar/avatar_5.jpg', '测试3', '0', '0', '0', '2017-03-04 15:42:00', null, null, null);
 INSERT INTO `os_comment_reply` VALUES ('4', '8', '1', '猫宁', 'default/avatar/avatar_8.jpg', '测试3', '0', '1', '0', '2017-03-04 15:42:00', null, null, null);
+INSERT INTO `os_comment_reply` VALUES ('5', '10', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '超级赞！~赞', '0', '1', '0', '2017-05-15 14:18:22', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('6', '10', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '超级赞！~赞', '0', '1', '0', '2017-05-15 14:21:27', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('7', '12', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '', '0', '1', '0', '2017-05-15 14:22:41', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('8', '12', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '', '0', '1', '0', '2017-05-15 14:23:12', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('9', '12', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '赞赞岁男子拿', '0', '1', '0', '2017-05-15 14:25:03', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('10', '12', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '咱按时打算的', '0', '1', '0', '2017-05-15 14:25:09', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('11', '20', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '赞赞赞！~', '0', '1', '0', '2017-05-15 14:34:17', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('12', '20', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '赞赞赞！~', '0', '1', '0', '2017-05-15 14:34:19', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('13', '18', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '赞赞赞！~', '0', '1', '0', '2017-05-15 14:34:29', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('14', '19', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '赞赞男咋！~', '0', '1', '0', '2017-05-15 14:35:35', '穿鞋子的猫', null, null);
+INSERT INTO `os_comment_reply` VALUES ('15', '10', '1', '穿鞋子的猫', 'default/avatar/avatar_8.jpg', '咱在那咋咋！', '0', '1', '0', '2017-05-16 12:53:32', '穿鞋子的猫', null, null);
 
 -- ----------------------------
 -- Table structure for os_email
@@ -1397,7 +1743,7 @@ CREATE TABLE `os_order` (
   `pay_amount` decimal(10,0) DEFAULT NULL COMMENT '支付金额 = 订单金额 + 快递费',
   `buy_number` int(11) DEFAULT NULL COMMENT '商品总数量',
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
 -- Records of os_order
@@ -1415,6 +1761,7 @@ INSERT INTO `os_order` VALUES ('10', '14944390772967434', '1', '1', '1', '1', '0
 INSERT INTO `os_order` VALUES ('11', '14944392556221620', '1', '1', '1', '1', '0', '1', null, '12', '2017-05-10 18:00:56', '2017-05-10 18:42:11', '1599', '1600', '1599', '1');
 INSERT INTO `os_order` VALUES ('12', '14944739317304562', '1', '1', '3', '1', '0', '2', '陈星星', '1', '2017-05-11 03:38:52', '2017-05-11 05:53:17', '1828', '1829', '1828', '2');
 INSERT INTO `os_order` VALUES ('13', '14944841433444157', '1', '1', '1', '1', '0', '1', null, '12', '2017-05-11 06:29:03', '2017-05-11 07:13:51', '5270', '5273', '5270', '5');
+INSERT INTO `os_order` VALUES ('14', '14947730414380630', '1', '1', '1', '1', '0', '1', null, '1', '2017-05-14 14:44:01', '2017-05-14 14:44:01', '1599', '1600', '1599', '1');
 
 -- ----------------------------
 -- Table structure for os_order_product
@@ -1435,7 +1782,7 @@ CREATE TABLE `os_order_product` (
   `product_amount` decimal(10,0) DEFAULT NULL COMMENT '商品总金额',
   `comment_status` tinyint(2) DEFAULT '0' COMMENT '评论状态 0=未评论，1=已评论',
   PRIMARY KEY (`order_product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='订单明细表';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='订单明细表';
 
 -- ----------------------------
 -- Records of os_order_product
@@ -1468,6 +1815,7 @@ INSERT INTO `os_order_product` VALUES ('25', '13', '1472581220748', '小米手�
 INSERT INTO `os_order_product` VALUES ('26', '13', '1472581245880', '小米MIX', 'images/goods/20170226/1471798364441.jpg', '14725812458801', ' ', '1799.00', '1800', '1', '1800', '1799', '0');
 INSERT INTO `os_order_product` VALUES ('27', '13', '1472583774201', '小米手环 2', 'images/goods/20170226/1471798568000.jpg', '1472583774201', ' ', '149.00', '149', '1', '149', '149', '0');
 INSERT INTO `os_order_product` VALUES ('28', '13', '1475353918562', '测试商品名称4', 'images/goods/20170226/1471797894441.jpg', '1475353918562', ' ', '124.00', '124', '1', '124', '124', '0');
+INSERT INTO `os_order_product` VALUES ('29', '14', '1472581220748', '小米手机5', 'images/goods/20170226/1471798318820.png', '14725812207481', '白色 16G ', '1599.00', '1600', '1', '1600', '1599', '0');
 
 -- ----------------------------
 -- Table structure for os_order_shipment
@@ -1488,7 +1836,7 @@ CREATE TABLE `os_order_shipment` (
   `user_zipcode` int(6) DEFAULT NULL COMMENT '邮政编码',
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`order_shipment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='订单配送表';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='订单配送表';
 
 -- ----------------------------
 -- Records of os_order_shipment
@@ -1506,6 +1854,7 @@ INSERT INTO `os_order_shipment` VALUES ('10', '10', '陈星星', '18857105127', 
 INSERT INTO `os_order_shipment` VALUES ('11', '11', '陈星星', '18857105127', '1371', '浙江省', '1372', '杭州市', '1379', '余杭区', '海曙路58号', '123456', '2017-03-16 18:48:18');
 INSERT INTO `os_order_shipment` VALUES ('12', '12', '陈星星陈星星', '18857105127', '1371', '浙江省', '1372', '杭州市', '1379', '余杭区', '海曙路58号', '123456', '2017-03-16 18:48:18');
 INSERT INTO `os_order_shipment` VALUES ('13', '13', '陈星星', '18857105127', '1', '北京市', '2', '北京市', '3', '东城区', '大撒旦3d大苏打', '321231', null);
+INSERT INTO `os_order_shipment` VALUES ('14', '14', '陈星星', '18857105127', '1', '北京市', '2', '北京市', '3', '东城区', '大撒旦3d大苏打', '321231', null);
 
 -- ----------------------------
 -- Table structure for os_order_status
@@ -1520,7 +1869,7 @@ CREATE TABLE `os_order_status` (
   `create_status` tinyint(2) DEFAULT NULL COMMENT '操作类型 0=会员，1=后台管理人员，2=异常通知',
   `remarks` varchar(255) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '备注信息',
   PRIMARY KEY (`order_status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='订单状态表';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='订单状态表';
 
 -- ----------------------------
 -- Records of os_order_status
@@ -1548,6 +1897,7 @@ INSERT INTO `os_order_status` VALUES ('25', '7', '12', '2017-05-10 18:46:41', '1
 INSERT INTO `os_order_status` VALUES ('26', '12', '1', '2017-05-11 03:38:52', '1', '0', '订单提交');
 INSERT INTO `os_order_status` VALUES ('27', '13', '1', '2017-05-11 06:29:03', '1', '0', '订单提交');
 INSERT INTO `os_order_status` VALUES ('28', '13', '12', '2017-05-11 07:13:51', '1', '0', '手动取消订单');
+INSERT INTO `os_order_status` VALUES ('29', '14', '1', '2017-05-14 14:44:01', '1', '0', '订单提交');
 
 -- ----------------------------
 -- Table structure for os_product
@@ -2005,12 +2355,11 @@ CREATE TABLE `os_shopping_cart` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `check_status` tinyint(2) DEFAULT '1' COMMENT '购物车状态：0,未选中；1,选中',
   PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='购物车表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='购物车表';
 
 -- ----------------------------
 -- Records of os_shopping_cart
 -- ----------------------------
-INSERT INTO `os_shopping_cart` VALUES ('28', '14725812207481', '1', '1', '2017-05-12 05:03:24', null, '1');
 
 -- ----------------------------
 -- Table structure for os_specification
@@ -2091,7 +2440,7 @@ CREATE TABLE `os_user` (
 -- ----------------------------
 -- Records of os_user
 -- ----------------------------
-INSERT INTO `os_user` VALUES ('1', '14875975007231277', '穿鞋子的猫', '289d1f89b1a93395267bac0af18bd916', 'IeA7iu', '陈星星', '0', '0', 'default/avatar/avatar_8.jpg', '1', '1', '810170512@qq.com', '18857105127', '2017-05-14 14:10:34', '172.27.15.122', '90', '2017-02-21 15:19:07', null, '2017-02-24 01:53:02', '穿鞋子的猫', null, null, '0');
+INSERT INTO `os_user` VALUES ('1', '14875975007231277', '穿鞋子的猫', '289d1f89b1a93395267bac0af18bd916', 'IeA7iu', '陈星星', '0', '0', 'default/avatar/avatar_8.jpg', '1', '1', '810170512@qq.com', '18857105127', '2017-05-18 23:16:43', '172.27.143.119', '90', '2017-02-21 15:19:07', null, '2017-02-24 01:53:02', '穿鞋子的猫', null, null, '0');
 INSERT INTO `os_user` VALUES ('8', '148777295260796', '陈星星', '0fb10cf407bc90a8f6c4c2299aeb0b2c', 'jmslV1', '陈星星', '0', '0', 'default/avatar/avatar_4.jpg', '1', '1', '55245511@qq.com', '18857105120', '2017-02-22 22:16:24', '172.27.201.108', '1', '2017-02-22 22:15:53', '陈星星', null, null, '0', null, '0');
 INSERT INTO `os_user` VALUES ('12', '148777481346536', '陈星星', 'e00d4e98d017fcf9a3b41a341c2bcd30', 'uN2Gdw', '陈星星', '0', '0', 'default/avatar/avatar_5.jpg', '1', '1', '55245521@qq.com', '18857105137', null, null, '0', '2017-02-22 22:46:53', '陈星星', null, null, '0', null, '0');
 INSERT INTO `os_user` VALUES ('28', '149165425386333', '陈星星', '369ff948ec73fefd97f03768f0520e89', '9B9H9P', '陈星星', '0', '0', 'default/avatar/avatar_7.jpg', '1', '1', '810170513@qq.com', '18857105165', '2017-05-09 13:10:28', '172.27.85.77', '0', '2017-04-08 12:24:14', '陈星星', '2017-04-18 08:05:39', '陈星星', '0', null, '0');
@@ -2108,7 +2457,7 @@ CREATE TABLE `os_user_login_log` (
   `operating_system` varchar(50) DEFAULT NULL COMMENT '操作系统',
   `browser` varchar(50) DEFAULT NULL COMMENT '浏览器',
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COMMENT='用户登录表';
 
 -- ----------------------------
 -- Records of os_user_login_log
@@ -2248,3 +2597,9 @@ INSERT INTO `os_user_login_log` VALUES ('132', '2017-05-12 05:03:17', '172.27.18
 INSERT INTO `os_user_login_log` VALUES ('133', '2017-05-12 05:12:22', '172.27.183.3', '1', 'WINDOWS_10', 'CHROME45');
 INSERT INTO `os_user_login_log` VALUES ('134', '2017-05-12 06:37:32', '172.27.183.3', '1', 'WINDOWS_10', 'CHROME45');
 INSERT INTO `os_user_login_log` VALUES ('135', '2017-05-14 14:10:34', '172.27.15.122', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('136', '2017-05-14 14:42:01', '172.27.15.122', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('137', '2017-05-14 16:26:09', '172.18.56.79', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('138', '2017-05-15 13:14:47', '172.27.44.37', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('139', '2017-05-15 14:13:23', '172.27.44.37', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('140', '2017-05-16 12:53:07', '172.27.70.72', '1', 'WINDOWS_10', 'CHROME45');
+INSERT INTO `os_user_login_log` VALUES ('141', '2017-05-18 23:16:43', '172.27.143.119', '1', 'WINDOWS_10', 'CHROME45');

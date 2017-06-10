@@ -141,7 +141,6 @@ public class OnlineAdvertController extends BaseController {
 	@RequiresPermissions("online:advert:edit")
 	@GetMapping(value = "/{advertId}/edit")
 	public String getUpdatePage(Model model, @PathVariable("advertId") Long advertId) {
-		
 		// 广告信息
 		Advert advert = advertService.selectById(advertId);
 		model.addAttribute("advert", advert);

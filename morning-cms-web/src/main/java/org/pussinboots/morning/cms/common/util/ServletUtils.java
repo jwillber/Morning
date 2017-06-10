@@ -214,10 +214,17 @@ public class ServletUtils {
 			}
 		}
 		// 对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
-		if (ipAddress != null && ipAddress.length() > 15 && ipAddress.indexOf(',') > 0) { // "***.***.***.***".length() // = 15
+		if (ipAddress != null && ipAddress.length() > 15 && ipAddress.indexOf(',') > 0) {
 			ipAddress = ipAddress.substring(0, ipAddress.indexOf(','));
 		}
 		return ipAddress;
+	}
+	
+	/**
+	 * 获取当前用户游览器信息
+	 */
+	public static String getHeader() {
+		return getRequest().getHeader("User-Agent");
 	}
 	
 	/**

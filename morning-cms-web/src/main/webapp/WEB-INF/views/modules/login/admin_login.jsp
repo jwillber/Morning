@@ -19,7 +19,7 @@
     <input type="text" name="loginName" placeholder="账号" class="login_txtbx"/>
   </dd>
   <dd class="pwd_icon">
-    <input type="password" name="loginPassword" placeholder="密码" class="login_txtbx" data-exponent="${publicKeyMap.exponent}" data-modulus="${publicKeyMap.modulus}" />
+    <input type="password" name="loginPassword" placeholder="密码" class="login_txtbx"/>
   </dd>
   <dd class="val_icon">
     <div class="checkcode">
@@ -37,7 +37,6 @@
 </dl>
 <script src="${ctxsta}/common/jquery/jquery-3.2.0.min.js"></script> 
 <script src="${ctxsta}/common/layer/layer.js"></script> 
-<script src="${ctxsta}/common/security/security.js"></script> 
 <script src="${ctxsta}/common/particleground/js/jquery.particleground.min.js"></script> 
 <script src="${ctxsta}/cms/js/login.js"></script>
 </body>

@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>创建广告位 - 猫宁Morning</title>
+<title>更新广告位- 猫宁Morning</title>
 <link rel="stylesheet" href="${ctxsta}/common/icheck/flat/green.css" />
 </head>
 
@@ -13,7 +13,7 @@
     <div class="col-sm-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>创建广告位<small> 广告位信息时应当遵循合法、正当、必要的原则，明示目的、方式和范围。</small></h5>
+          <h5>更新广告位<small> 广告位信息时应当遵循合法、正当、必要的原则，明示目的、方式和范围。</small></h5>
           <div class="ibox-tools"> <a class="collapse-link"><i class="fa fa-chevron-up"></i></a> <a class="close-link"><i class="fa fa-times"></i></a> </div>
         </div>
         <div class="ibox-content">

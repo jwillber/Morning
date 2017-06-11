@@ -63,6 +63,8 @@ $(function() {
 		searchOnEnterKey: true,
 		idField: 'logId',
 		maintainSelected: true,
+		sortName: 'logId',
+		sortOrder: 'desc',
 		toolbar: '#toolbar',
 		columns: [
 			{field: 'logId', title: '编号', sortable: true, align: 'center', halign: 'center'},

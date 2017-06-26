@@ -11,8 +11,10 @@
 	String imagePath = projectPath + "/uploads";
 %>
 <%--项目路径 --%>
-<c:set var="ctx" value="<%=projectPath%>"></c:set>
+<c:set var="basePath" value="<%=projectPath%>"></c:set>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <%--静态资源路径 --%>
-<c:set var="ctxsta" value="<%=staticPath%>"></c:set>
+<c:set var="ctxsta" value="${pageContext.request.contextPath}/static"/>
 <%--页面显示图片的前缀路径--%>
-<c:set var="ctximg" value="<%=imagePath%>"></c:set>
+<c:set var="ctximg" value="${pageContext.request.contextPath}/uploads"/>
+

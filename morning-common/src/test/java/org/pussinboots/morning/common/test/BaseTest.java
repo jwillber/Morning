@@ -1,4 +1,4 @@
-package org.pussinboots.morning.common.base;
+package org.pussinboots.morning.common.test;
 
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

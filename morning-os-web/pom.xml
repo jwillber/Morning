@@ -55,7 +55,7 @@
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-order-service</artifactId>
 			<version>${morning.version}</version>
-		</dependency>		
+		</dependency>
 		<!-- Morning相关依赖 end -->
 
 		<!-- 7.安全框架SECURITY:shiro begin -->
@@ -160,7 +160,18 @@
 	</dependencies>
 
 	<build>
-		<finalName>morning-cms-web</finalName>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>profiles/local/*</exclude>
+					<exclude>profiles/dev/*</exclude>
+					<exclude>profiles/product/*</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -172,6 +183,14 @@
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 						<!-- 重点是这个配置 -->
 						<warName>morning</warName>
+						<webResources>
+							<!-- 不同的环境，使用不同的配置文件 -->
+							<resource>
+								<directory>src/main/resources/profiles/${package.environment}</directory>
+								<targetPath>WEB-INF/classes/properties</targetPath>
+								<filtering>true</filtering>
+							</resource>
+						</webResources>
 					</configuration>
 				</plugin>
 			</plugins>

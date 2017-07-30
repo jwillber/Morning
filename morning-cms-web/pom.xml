@@ -25,12 +25,12 @@
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-system-facade</artifactId>
 			<version>${morning.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-administrator-service</artifactId>
 			<version>${morning.version}</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-system-service</artifactId>
@@ -45,7 +45,7 @@
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-online-service</artifactId>
 			<version>${morning.version}</version>
-		</dependency>	
+		</dependency>
 		<dependency>
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-product-facade</artifactId>
@@ -55,7 +55,17 @@
 			<groupId>org.pussinboots.morning</groupId>
 			<artifactId>morning-product-service</artifactId>
 			<version>${morning.version}</version>
-		</dependency>							
+		</dependency>
+		<dependency>
+			<groupId>org.pussinboots.morning</groupId>
+			<artifactId>morning-support-facade</artifactId>
+			<version>${morning.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.pussinboots.morning</groupId>
+			<artifactId>morning-support-service</artifactId>
+			<version>${morning.version}</version>
+		</dependency>		
 		<!-- Morning相关依赖 end -->
 
 		<!-- 7.安全框架SECURITY:shiro begin -->
@@ -139,7 +149,7 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId> <!--jackson json:高性能的JSON处理 -->
 		</dependency>
-		
+
 		<!-- 验证码工具KAPTCHA:kaptcha -->
 		<dependency>
 			<groupId>com.github.penggle</groupId>
@@ -160,8 +170,43 @@
 
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>local</id><!-- 本地开发环境 -->
+			<properties>
+				<package.environment>local</package.environment>
+			</properties>
+			<activation><!-- 默认被激活 -->
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>dev</id><!-- 开发测试环境 -->
+			<properties>
+				<package.environment>dev</package.environment>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id><!-- 线上生产环境 -->
+			<properties>
+				<package.environment>product</package.environment>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
-		<finalName>morning-cms-web</finalName>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>profiles/local/*</exclude>
+					<exclude>profiles/dev/*</exclude>
+					<exclude>profiles/product/*</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -173,6 +218,14 @@
 						<failOnMissingWebXml>false</failOnMissingWebXml>
 						<!-- 重点是这个配置 -->
 						<warName>system.morning</warName>
+						<webResources>
+							<!-- 不同的环境，使用不同的配置文件 -->
+							<resource>
+								<directory>src/main/resources/profiles/${package.environment}</directory>
+								<targetPath>WEB-INF/classes/properties</targetPath>
+								<filtering>true</filtering>
+							</resource>
+						</webResources>
 					</configuration>
 				</plugin>
 			</plugins>

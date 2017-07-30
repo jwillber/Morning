@@ -11,10 +11,10 @@ package org.pussinboots.morning.system.common.enums;
  */
 public enum MenuTypeEnum {
 
-	FIRST_MENU(1,"一级目录"),
-	SECOND_MENU(2,"二级目录"),
-	THIRD_MENU(3,"三级目录"),
-	HANDLE_MENU(0,"操作目录");	
+	FIRST_MENU(1, "一级目录"),
+	SECOND_MENU(2, "二级目录"),
+	THIRD_MENU(3, "三级目录"),
+	HANDLE_MENU(0, "操作目录");
 
 	private Integer type;
 

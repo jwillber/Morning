@@ -7,8 +7,12 @@ import org.pussinboots.morning.common.constant.CommonReturnCode;
 import org.pussinboots.morning.common.enums.WebSiteFileBelongEnum;
 import org.pussinboots.morning.common.support.upload.UploadManager;
 import org.pussinboots.morning.common.support.upload.UploadResult;
+import org.pussinboots.morning.support.common.enums.CloudServiceEnum;
+import org.pussinboots.morning.support.factory.CloudStorageFactory;
+import org.pussinboots.morning.support.service.IBaseCloudStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +38,36 @@ public class UploadController extends BaseController{
 	
 	private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 	
+	@Autowired
+	private CloudStorageFactory cloudStorageFactory;
+	
+	/**
+	 * POST 广告图片上传
+	 * @return
+	 */
+	@PostMapping(value = "/demo", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public Object uploadDemo(MultipartFile multipartFile) {
+		if (!multipartFile.isEmpty()) {
+			try {
+				// 判断文件的MIMEtype
+				String type = multipartFile.getContentType();
+				if (type == null || !type.toLowerCase().startsWith("image/")) {
+					return new CmsResult(CommonReturnCode.BAD_REQUEST.getCode(), "不支持的文件类型，仅支持图片!");
+				}
+				IBaseCloudStorageService baseCloudStorageService = cloudStorageFactory
+						.getBaseCloudStorageService(CloudServiceEnum.QINIU);
+				baseCloudStorageService.upload(multipartFile.getBytes(), "morning",
+						multipartFile.getOriginalFilename());
+
+			} catch (Exception e) {
+				logger.error("ImageUploadController.uploadHeadPortrait={}", e);
+				return new CmsResult(CommonReturnCode.UNKNOWN_ERROR);
+			}
+		}
+		return new CmsResult(CommonReturnCode.BAD_REQUEST.getCode(), "图片不存在,请确认图片地址重新上传!");
+	}
+
 	/**
 	 * POST 广告图片上传
 	 * @return
@@ -61,28 +95,26 @@ public class UploadController extends BaseController{
 			}
 		}
 		return new CmsResult(CommonReturnCode.BAD_REQUEST.getCode(), "图片不存在,请确认图片地址重新上传!");
-	}
+	}	
+	
 	
 	/**
 	 * POST 用户头像上传
-	 * @param avatar_file
-	 * @param avatar_src
-	 * @param avatar_data
 	 * @return
 	 */
 	@PostMapping(value = "/avatar", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public Object uploadAvatar(MultipartFile avatar_file, String avatar_src, String avatar_data) {
-		if (!avatar_file.isEmpty()) {
+	public Object uploadAvatar(MultipartFile multipartFile, String avatar_src, String avatar_data) {
+		if (!multipartFile.isEmpty()) {
 			try {
 
 				// 判断文件的MIMEtype
-				String type = avatar_file.getContentType();
+				String type = multipartFile.getContentType();
 				if (type == null || !type.toLowerCase().startsWith("image/")) {
 					return new CmsResult(CommonReturnCode.BAD_REQUEST.getCode(), "不支持的文件类型，仅支持图片!");
 				}
 
-				UploadResult uploadResult = UploadManager.upload(ServletUtils.getRequest(), avatar_file,
+				UploadResult uploadResult = UploadManager.upload(ServletUtils.getRequest(), multipartFile,
 						HtmlUtils.htmlUnescape(avatar_data), WebSiteFileBelongEnum.IMAGES.getBelong(),
 						WebSiteFileBelongEnum.AVATAR.getBelong());
 

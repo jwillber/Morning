@@ -85,9 +85,9 @@ public class MpGenerator {
 		StrategyConfig strategy = new StrategyConfig();
 		// strategy.setCapitalMode(true);// 全局大写命名
 		// strategy.setDbColumnUnderline(true);//全局下划线命名
-		strategy.setTablePrefix(new String[] { "cms_" });// 此处可以修改为您的表前缀
+		strategy.setTablePrefix(new String[] { "support_" });// 此处可以修改为您的表前缀
 		strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
-		strategy.setInclude(new String[] { "cms_log"}); // 需要生成的表
+		strategy.setInclude(new String[] { "support_image_log"}); // 需要生成的表
 		// strategy.setExclude(new String[]{"test"}); // 排除生成的表
 		
 		// 自定义实体父类
@@ -113,7 +113,7 @@ public class MpGenerator {
 		// 包配置
 		PackageConfig pc = new PackageConfig();
 		pc.setParent("org.pussinboots.morning");
-		pc.setModuleName("system");
+		pc.setModuleName("support");
 		mpg.setPackageInfo(pc);
 		
 		// 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值

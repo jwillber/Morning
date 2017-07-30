@@ -11,7 +11,7 @@
 	<description>spring Configuration</description>
 	
 	<!-- 加载配置文件 -->
-	<context:property-placeholder  ignore-resource-not-found="true" location="classpath:properties/*.properties" />
+	<context:property-placeholder  ignore-resource-not-found="true" location="classpath*:properties/*.properties" />
                                   
 	<!-- 使用Annotation自动注册Bean,解决事物失效问题：在主容器中不扫描@Controller注解,在SpringMvc中只扫描@Controller注解。  -->
 	<context:component-scan base-package="org.pussinboots.morning"><!-- base-package 如果多个,用“,”分隔 -->

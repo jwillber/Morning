@@ -63,7 +63,7 @@ public class AdministratorLoginController extends BaseController{
 	 * @param model
 	 * @return
 	 */
-	@ApiOperation(value = "管理员登录", notes = "管理员登录首页,向前台传送网站公钥")
+	@ApiOperation(value = "管理员登录", notes = "管理员登录首页")
 	@GetMapping(value = "/login")
 	public String getLoginPage(Model model) {
 		return "/modules/login/admin_login";

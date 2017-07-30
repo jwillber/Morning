@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-	<!-- 父项目的坐标:如果项目中没有规定某个元素的值,那么父项目中的对应值即为项目的默认值. 坐标包括group ID,artifact ID和 version. -->
+	<!-- 父项目的坐标:如果项目中没有规定某个元素的值,那么父项目中的对应值即为项目的默认值. 坐标包括group ID,artifact ID和 
+		version. -->
 	<modelVersion>4.0.0</modelVersion>								<!--声明项目描述符遵循哪一个POM模型版本.模型本身的版本很少改变,虽然如此,但它仍然是必不可少的,这是为了当Maven引入了新的特性或者其他模型变更的时候,确保稳定性. -->
 	<groupId>org.pussinboots.morning</groupId>	    				<!--项目的全球唯一标识符,通常使用全限定的包名区分该项目和其他项目.并且构建时生成的路径也是由此生成, 如com.mycompany.app生成的相对路径为:/com/mycompany/app. -->
 	<artifactId>morning-parent</artifactId>							<!--被继承的父项目的构件标识符. -->
@@ -21,8 +23,9 @@
 		<module>morning-online</module>
 		<module>morning-system</module>
 		<module>morning-cms-web</module>
-    	<module>morning-os-web</module>
-  	</modules>
+		<module>morning-os-web</module>
+		<module>morning-support</module>
+	</modules>
 
 	<!-- 项目属性 -->
 	<properties>
@@ -75,33 +78,34 @@
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<morning.version>3.0.0-SNAPSHOT</morning.version>
+		<package.environment>dev</package.environment>
 
 	</properties>
 
 	<!-- 设定主仓库，按设定顺序进行查找。 -->
 	<repositories>
 		<repository>
-		    <id>nexus-aliyun</id>
-		    <name>Nexus aliyun</name>
-		    <layout>default</layout>
-		    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
-		    <snapshots>
-		        <enabled>false</enabled>
-		    </snapshots>
-		    <releases>
-		        <enabled>true</enabled>
-		    </releases>
+			<id>nexus-aliyun</id>
+			<name>Nexus aliyun</name>
+			<layout>default</layout>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
 		</repository>
 	</repositories>
-	
+
 	<!-- 设定插件仓库 -->
-	<pluginRepositories> 
+	<pluginRepositories>
 		<pluginRepository>
 			<id>nexus-aliyun</id>
 			<name>Nexus aliyun</name>
 			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
 		</pluginRepository>
-	</pluginRepositories> 
+	</pluginRepositories>
 
 	<!-- dependencyManagement里只是声明依赖,并不实现引入,因此子项目需要显示的声明需要用的依赖. -->
 	<dependencyManagement>
@@ -192,13 +196,13 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId><!--j2ee web spec -->
 				<version>${javax.servlet-api.version}</version>
-	            <scope>provided</scope>
+				<scope>provided</scope>
 			</dependency>
-	        <dependency>
-	            <groupId>javax.servlet.jsp</groupId>
-	            <artifactId>javax.servlet.jsp-api</artifactId>
-	            <version>${javax.servlet.jsp-api.version}</version>
-	        </dependency>			
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>javax.servlet.jsp-api</artifactId>
+				<version>${javax.servlet.jsp-api.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>jstl</artifactId>			  <!--JSTL标签类 -->
@@ -312,7 +316,7 @@
 				<version>${ehcache.version}</version>
 			</dependency>
 			<!-- 缓存框架EHCACHE:ehcache end -->
-			
+
 			<!-- 缓存框架REDIS:redis begin -->
 			<dependency>
 				<groupId>org.springframework.data</groupId>
@@ -426,10 +430,10 @@
 				<version>1.1.1</version>
 			</dependency>
 			<dependency>
-			    <groupId>com.sun.mail</groupId>
-			    <artifactId>javax.mail</artifactId>
-			    <version>1.5.6</version>
-			</dependency>			
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>1.5.6</version>
+			</dependency>
 
 			<!-- 使用Velocity 模板引擎快速生成代码 -->
 			<dependency>
@@ -451,6 +455,19 @@
 				<artifactId>commons-lang3</artifactId>
 				<version>${commons-lang3.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>com.qiniu</groupId>
+				<artifactId>qiniu-java-sdk</artifactId>
+				<version>7.2.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.aliyun.oss</groupId>
+				<artifactId>aliyun-sdk-oss</artifactId>
+				<version>2.7.0</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -483,17 +500,17 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-			
+
 			<!-- maven-surefire-plugin:不执行测试用例，也不编译测试用例类。 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <skip>true</skip>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<skip>true</skip>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

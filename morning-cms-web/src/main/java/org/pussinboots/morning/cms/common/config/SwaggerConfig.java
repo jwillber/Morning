@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc
 @ComponentScan(basePackages = {"org.pussinboots.morning.cms.controller"})
 public class SwaggerConfig {
-	
+
    @Bean  
     public Docket platformApi() {  
         return new Docket(DocumentationType.SWAGGER_2)  

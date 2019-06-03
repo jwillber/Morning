@@ -34,7 +34,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, Log> implements ILogS
 		Page<Log> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
 		List<Log> adverts = logMapper.listByPage(pageInfo, search, page);
 		pageInfo.setTotal(page.getTotal());
-		return new BasePageDTO<Log>(pageInfo, adverts);
+		return new BasePageDTO<>(pageInfo, adverts);
 	}
 	
 }

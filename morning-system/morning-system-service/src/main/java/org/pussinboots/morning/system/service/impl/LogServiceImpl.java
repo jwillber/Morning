@@ -30,6 +30,7 @@ public class LogServiceImpl extends ServiceImpl<LogMapper, Log> implements ILogS
 
 	@Override
 	public BasePageDTO<Log> listByPage(PageInfo pageInfo, String search) {
+		System.out.println("Hello World!");
 		Page<Log> page = new Page<>(pageInfo.getCurrent(), pageInfo.getLimit());
 		List<Log> adverts = logMapper.listByPage(pageInfo, search, page);
 		pageInfo.setTotal(page.getTotal());
